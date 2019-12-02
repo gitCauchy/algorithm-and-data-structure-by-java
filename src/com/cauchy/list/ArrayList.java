@@ -1,4 +1,4 @@
-package com.cauchy.array;
+package com.cauchy.list;
 
 import java.util.Arrays;
 
