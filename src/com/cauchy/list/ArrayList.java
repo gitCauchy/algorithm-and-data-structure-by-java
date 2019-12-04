@@ -8,10 +8,13 @@ import java.util.Arrays;
  * @ClassName ArrayList.java
  * @Date 2019年12月2日
  * @Description 线性表
- * @Version 0.1
+ * @Version v0.2
  *
  */
 public class ArrayList {
+	
+	private static final int INITSIZE = 10;
+	
 	/*
 	 * 存储元素数组
 	 */
@@ -25,10 +28,11 @@ public class ArrayList {
 	 * 初始化
 	 */
 	public ArrayList() {
-		elements = new Integer[5];
+		elements = new Integer[INITSIZE];
 	}
 
 	/**
+	 * @description 线性表长度
 	 * @return 数组的长度
 	 */
 	public int size() {
@@ -36,7 +40,7 @@ public class ArrayList {
 	}
 
 	/**
-	 * 
+	 * @description 添加元素
 	 * @param e   要添加的元素
 	 * @param loc 元素添加的位置
 	 */
@@ -61,6 +65,7 @@ public class ArrayList {
 	}
 
 	/**
+	 * @description 向末尾添加元素
 	 * @description 添加到末尾
 	 * @param e 添加的元素
 	 */
@@ -69,7 +74,7 @@ public class ArrayList {
 	}
 
 	/**
-	 * 
+	 * @description 删除元素
 	 * @param loc 删除元素的位置
 	 */
 	public void delete(int loc) {
@@ -84,7 +89,7 @@ public class ArrayList {
 	}
 
 	/**
-	 * 
+	 * @description 
 	 * @param loc 位置
 	 * @return 指定位置的元素
 	 */
