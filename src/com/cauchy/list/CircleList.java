@@ -11,7 +11,7 @@ package com.cauchy.list;
  *
  */
 public class CircleList {
-	private class Node{
+	public class Node{
 		int data;
 		Node next;
 		
