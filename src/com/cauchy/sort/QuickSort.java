@@ -1,6 +1,4 @@
 package com.cauchy.sort;
-
-import java.util.Arrays;
 /**
  * 
  * @author Cauchy
