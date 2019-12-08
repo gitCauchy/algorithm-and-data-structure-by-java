@@ -138,6 +138,26 @@ public class BinaryTree {
 			}
 			return target;
 		}
+		// 删除一棵子树
+		public void delete(int x) {
+			TreeNode parent = this;
+			if(parent.lNode != null && parent.lNode.value == x) {
+				parent.lNode = null;
+				return;
+			}else if(parent.rNode != null && parent.rNode.value == x) {
+				parent.rNode = null;
+				return;
+			}else {
+				parent = lNode;
+				if(parent != null) {
+					parent.delete(x);
+				}
+				parent = rNode;
+				if(parent != null) {
+					parent.delete(x);
+				}
+			}
+		}
 	}
 
 	BinaryTree.TreeNode root;
@@ -205,6 +225,15 @@ public class BinaryTree {
 		return root.postOrderSearch(x);
 	}
 	
+	public void deleteNode(int x) {
+		if(root.value == x) {
+			//root.delete(x);
+			root = null;
+		}else {
+			root.delete(x);
+		}
+	}
+	
 	
 	public static void main(String[] args) throws Exception {
 		BinaryTree tree = new BinaryTree();
@@ -216,8 +245,10 @@ public class BinaryTree {
 		BinaryTree.TreeNode n32 = tree.setTreeNode(5, n21, "right");
 		BinaryTree.TreeNode n33 = tree.setTreeNode(6, n22, "left");
 		BinaryTree.TreeNode n34 = tree.setTreeNode(7, n22, "right");
-//		// 先序遍历
-//		tree.preOrderTraversal();
+		
+		tree.deleteNode(2);
+		// 先序遍历
+		tree.preOrderTraversal();
 //		System.out.println();
 //		// 中序遍历
 //		tree.inOrderTraversal();
@@ -225,12 +256,12 @@ public class BinaryTree {
 //		// 后序遍历
 //		tree.postOrderTraversal();
 		System.out.println("---------------------");
-		TreeNode result = tree.preOrderSearch(2);
-		TreeNode result1 = tree.inOrderSearch(2);
-		TreeNode result2 = tree.postOrderSearch(2);
-		System.out.println(result);
-		System.out.println(result1);
-		System.out.println(result2);
+//		TreeNode result = tree.preOrderSearch(2);
+//		TreeNode result1 = tree.inOrderSearch(2);
+//		TreeNode result2 = tree.postOrderSearch(2);
+//		System.out.println(result);
+//		System.out.println(result1);
+//		System.out.println(result2);
 	}
 	
 	
