@@ -1,4 +1,4 @@
-package com.cauchy.tree.binary;
+package com.cauchy.tree.binarytree;
 
 /**
  * 
@@ -9,7 +9,7 @@ package com.cauchy.tree.binary;
  * @Version V0.1
  *
  */
-public class BinaryTree {
+public class BinaryTreeByInnerClass {
 	
 	public class TreeNode{
 		/*
@@ -160,12 +160,12 @@ public class BinaryTree {
 		}
 	}
 
-	BinaryTree.TreeNode root;
+	BinaryTreeByInnerClass.TreeNode root;
 	
 	/**
 	 * @description 创建一颗空树
 	 */
-	public BinaryTree() { 
+	public BinaryTreeByInnerClass() { 
 		root = null;
 	}
 
@@ -181,7 +181,7 @@ public class BinaryTree {
 	 */
 	public TreeNode setTreeNode(int data,TreeNode fNode,String nodeType) throws Exception {
 		
-		BinaryTree.TreeNode node = this.new TreeNode(data);
+		BinaryTreeByInnerClass.TreeNode node = this.new TreeNode(data);
 		if(fNode != null) {
 			if(nodeType.equals("left")) {
 				fNode.setlNode(node);
@@ -236,15 +236,15 @@ public class BinaryTree {
 	
 	
 	public static void main(String[] args) throws Exception {
-		BinaryTree tree = new BinaryTree();
+		BinaryTreeByInnerClass tree = new BinaryTreeByInnerClass();
 		//BinaryTree tree = new BinaryTree(this.setTreeNode(0, null, null));
 		tree.root = tree.setTreeNode(1, null, null);
-		BinaryTree.TreeNode n21 = tree.setTreeNode(2, tree.root, "left");
-		BinaryTree.TreeNode n22 = tree.setTreeNode(3, tree.root, "right");
-		BinaryTree.TreeNode n31 = tree.setTreeNode(4, n21, "left");
-		BinaryTree.TreeNode n32 = tree.setTreeNode(5, n21, "right");
-		BinaryTree.TreeNode n33 = tree.setTreeNode(6, n22, "left");
-		BinaryTree.TreeNode n34 = tree.setTreeNode(7, n22, "right");
+		BinaryTreeByInnerClass.TreeNode n21 = tree.setTreeNode(2, tree.root, "left");
+		BinaryTreeByInnerClass.TreeNode n22 = tree.setTreeNode(3, tree.root, "right");
+		BinaryTreeByInnerClass.TreeNode n31 = tree.setTreeNode(4, n21, "left");
+		BinaryTreeByInnerClass.TreeNode n32 = tree.setTreeNode(5, n21, "right");
+		BinaryTreeByInnerClass.TreeNode n33 = tree.setTreeNode(6, n22, "left");
+		BinaryTreeByInnerClass.TreeNode n34 = tree.setTreeNode(7, n22, "right");
 		
 		tree.deleteNode(2);
 		// 先序遍历
