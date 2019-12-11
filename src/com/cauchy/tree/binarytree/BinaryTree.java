@@ -1,5 +1,13 @@
 package com.cauchy.tree.binarytree;
-
+/**
+ * 
+ * @author Cauchy
+ * @ClassName BinaryTree.java
+ * @Date 2019年12月11日
+ * @Description 二叉树实现
+ * @Version V0.1
+ *
+ */
 public class BinaryTree {
 	/*
 	 * 根节点
@@ -11,9 +19,9 @@ public class BinaryTree {
 	}
 	/**
 	 * 
-	 * @param data
-	 * @param fNode
-	 * @param nodeType
+	 * @param data 数据
+	 * @param fNode 父节点
+	 * @param nodeType 节点类型
 	 * @return
 	 * @throws Exception 
 	 * @Description 插入节点
@@ -35,19 +43,25 @@ public class BinaryTree {
 	 * @Description 先序遍历二叉树
 	 */
 	public void preOrderTraversal() {
+		System.out.println("--PRE ORDER TRAVERSAL--");
 		root.preOrderTraversal();
+		System.out.println();
 	}
 	/**
 	 * @Description 中序遍历二叉树
 	 */
 	public void inOrderTraversal() {
+		System.out.println("--IN ORDER TRAVERSAL--");
 		root.inOrderTraversal();
+		System.out.println();
 	}
 	/**
 	 * @Description 后序遍历二叉树
 	 */
 	public void postOrderTraversal() {
+		System.out.println("--POST ORDER TRAVERSAL--");
 		root.postOrderTraversal();
+		System.out.println("");
 	}
 	/**
 	 * 
@@ -94,10 +108,10 @@ public class BinaryTree {
 		TreeNode n32 = tree.buildTreeNode(5, n21, "right");
 		TreeNode n33 = tree.buildTreeNode(6, n22, "left");
 		TreeNode n34 = tree.buildTreeNode(7, n22, "right");
-		//tree.preOrderTraversal();
-		//tree.inOrderTraversal();
-		//tree.postOrderTraversal();
-		TreeNode five = tree.preOrderSearch(5);
+		tree.preOrderTraversal();
+		tree.inOrderTraversal();
+		tree.postOrderTraversal();
+		TreeNode five = tree.postOrderSearch(5);
 		System.out.println(five);
 		
 	}
