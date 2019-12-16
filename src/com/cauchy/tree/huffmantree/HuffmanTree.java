@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * 
+ * @author Cauchy
+ * @ClassName HuffmanTree.java
+ * @Date 2019Äê12ÔÂ16ÈÕ
+ * @Description ºÕ·òÂüÊ÷
+ * @Version V0.1
+ *
+ */
 public class HuffmanTree {
 	public static Node createHuffmanTree(int[] arr) {
 		List<Node> nodes = new ArrayList<Node>();
@@ -25,12 +33,6 @@ public class HuffmanTree {
 			nodes.remove(right);
 			nodes.add(parent);
 		}
-		//System.out.println(nodes);
 		return nodes.get(0);
-	}
-	
-	public static void main(String[] args) {
-		int[] arr = {3,7,8,29,5,11,23,14};
-		Node node = createHuffmanTree(arr);
 	}
 }

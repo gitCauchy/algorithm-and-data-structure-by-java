@@ -1,6 +1,15 @@
 package com.cauchy.tree.huffmantree;
 
-public class Node implements Comparable<Node>{
+/**
+ * 
+ * @author Cauchy
+ * @ClassName Node.java
+ * @Date 2019年12月16日
+ * @Description 赫夫曼树节点
+ * @Version V0.1
+ *
+ */
+public class Node implements Comparable<Node> {
 	/*
 	 * 权值
 	 */
@@ -13,27 +22,22 @@ public class Node implements Comparable<Node>{
 	 * 右节点
 	 */
 	Node rNode;
+
 	public Node(int value) {
 		this.value = value;
 	}
 
 	public int compareTo(Node o) {
-		if(this.value == o.value) {
+		if (this.value == o.value) {
 			return 0;
-		}else if(this.value > o.value) {
+		} else if (this.value > o.value) {
 			return -1;
-		}else {
+		} else {
 			return 1;
 		}
 	}
 
-	@Override
 	public String toString() {
 		return "Node [value=" + value + "]";
 	}
-	
-	
-	
-	
-
 }
