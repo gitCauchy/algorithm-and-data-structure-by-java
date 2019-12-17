@@ -1,7 +1,6 @@
 package com.cauchy.tree.huffmantree;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +19,7 @@ public class HuffmanCode {
 		byte[] bytes = message.getBytes();
 		byte[] b = huffmanZip(bytes);
 		// 解码操作
-		byte[] newByte = decode(huffCodes,b);
+		byte[] newByte = decode(huffmanCodes,b);
 		String meg = new String(newByte);
 	}
 	
@@ -79,69 +78,112 @@ public class HuffmanCode {
 	}
 	private static byte[] huffmanZip(byte[] bytes) {
 		// 先统计每个byte出现的次数，并放入到一个集合中
-		List<CodeNode> nodes = getNodes(bytes);
+		List<CodeNode> nodes = countNodes(bytes);
 		// 创建一个赫夫曼树
 		CodeNode tree = createHuffmanTree(nodes);
 		// 创建一个赫夫曼编码表
-		Map<Byte,String> huffmanCodes = getCodes(tree);
+		Map<Byte,String> huffmanCodeTable = createHaffmanCodeTable(tree);
 		// 编码
-		byte[] b = zip(bytes,huffCodes);
+		byte[] b = zip(bytes,huffmanCodeTable);
 		return b;
 		
 	}
+	/**
+	 * 
+	 * @param bytes
+	 * @param huffCodes
+	 * @return
+	 * @Description 按照码表压缩数据
+	 */
 	private static byte[] zip(byte[] bytes, Map<Byte, String> huffCodes) {
 		StringBuilder sb = new StringBuilder();
 		for(byte b:bytes) {
 			sb.append(huffCodes.get(b));
 		}
-		int length;
-		if(sb.length() % 8 == 0) {
-			length = sb.length() / 8;
-		}else {
-			length = sb.length() / 8 + 1;
-		}
+		int length = sb.length() % 8 == 0 ? sb.length() / 8 : sb.length() / 8 + 1;
+		
 		// 用于存储压缩后的byte
 		byte[] by = new byte[length];
 		int index = 0;
 		for(int i = 0; i < sb.length(); i += 8) {
-			String strByte;
-			if( i + 8 > sb.length()) {
-				strByte = sb.substring(i);
-			}
-			strByte = sb.substring(i, i + 8);
-			byte byt = (byte) Integer.parseInt(strByte);
-			by[index] = byt;
-			index ++;
+			String strByte = i + 8 > sb.length() ? sb.substring(i) : sb.substring(i, i + 8);
+			byte byt = (byte) Integer.parseInt(strByte,2);
+			by[index ++] = byt;
 		}
 		return by;
 	}
-	// 临时存储路径
+	
+	/**
+	 * 
+	 * @param bytes
+	 * @return
+	 * @Description 统计每个字符出现的次数
+	 */
+	private static List<CodeNode> countNodes(byte[] bytes){
+		List<CodeNode> nodes = new ArrayList<>();
+		Map<Byte,Integer> counts = new HashMap<>();
+		for(byte b : bytes) {
+			Integer count = counts.get(b);
+			counts.put(b, count == null ? 1 : count + 1);
+		}
+		// 将键值对转换为CodeNode对象
+		for(Map.Entry<Byte, Integer> entry : counts.entrySet()) {
+			nodes.add(new CodeNode(entry.getValue(), entry.getKey()));
+		}
+		return nodes;
+	}
+	/*
+	 *  临时存储路径
+	 */
 	static StringBuilder sb = new StringBuilder();
-	// 临时存储赫夫曼编码
-	static Map<Byte,String> huffCodes = new HashMap<Byte,String>();
-	private static Map<Byte, String> getCodes(CodeNode tree) {
+	/*
+	 *	临时存储赫夫曼编码
+	 */
+	static Map<Byte,String> huffmanCodes = new HashMap<Byte,String>();
+	
+	/**
+	 * 
+	 * @param tree 赫夫曼树
+	 * @return
+	 * @Description 创建赫夫曼编码表
+	 */
+	private static Map<Byte, String> createHaffmanCodeTable(CodeNode tree) {
 		if(tree == null) {
 			return null;
 		}
-		getCodes(tree.lNode,"0",sb);
-		getCodes(tree.rNode,"1",sb);
-		return huffCodes;
+		createHaffmanCodeTable(tree.lNode,"0",sb);
+		createHaffmanCodeTable(tree.rNode,"1",sb);
+		return huffmanCodes;
 	}
-
-	private static void getCodes(CodeNode node, String code, StringBuilder sb) {
+	/**
+	 * 
+	 * @param node 赫夫曼子树
+	 * @param code
+	 * @param sb
+	 * @Description 创建赫夫曼编码表
+	 */
+	private static void createHaffmanCodeTable(CodeNode node, String code, StringBuilder sb) {
 		StringBuilder sb2 = new StringBuilder(sb);
 		sb2.append(code);
 		if(node.data == null) {
-			getCodes(node.lNode,"0",sb2);
-			getCodes(node.rNode,"1",sb2);
+			createHaffmanCodeTable(node.lNode,"0",sb2);
+			createHaffmanCodeTable(node.rNode,"1",sb2);
 		}else {
-			huffCodes.put(node.data, sb2.toString());
+			huffmanCodes.put(node.data, sb2.toString());
 		}
+		
 	}
-
+	/**
+	 * 
+	 * @param nodes
+	 * @return
+	 * @Description 创建赫夫曼树
+	 */
 	private static CodeNode createHuffmanTree(List<CodeNode> nodes) {
 		while(nodes.size() > 1) {
+			// 排序
 			Collections.sort(nodes);
+			// 获取最小的两棵子树
 			CodeNode left = nodes.get(nodes.size() - 1);
 			CodeNode right = nodes.get(nodes.size() -2);
 			CodeNode parent = new CodeNode(left.weight + right.weight,null);
@@ -150,28 +192,12 @@ public class HuffmanCode {
 			// 把两棵树删掉
 			nodes.remove(left);
 			nodes.remove(right);
+			// 将新生成的树放置到集合中
 			nodes.add(parent);
 		}
 		return nodes.get(0);
 	}
-
-	private static List<CodeNode> getNodes(byte[] bytes) {
-		List<CodeNode> nodes = new ArrayList<>();
-		Map<Byte,Integer> counts = new HashMap<>();
-		for(byte b : bytes) {
-			Integer count = counts.get(b);
-			if(counts.get(b) == 0) {
-				counts.put(b, 1);
-			}else {
-				counts.put(b, count + 1);
-			}
-		}
-		// 把每一个键值对转为node对象
-		for(Map.Entry<Byte,Integer> entry : counts.entrySet()) {
-			nodes.add(new CodeNode(entry.getValue(),entry.getKey()));
-		}
-		return nodes;
-	}
+	
 	
 	// 文件压缩
 	// ----------------------------------------------------------------------
@@ -188,7 +214,7 @@ public class HuffmanCode {
 		OutputStream out = new FileOutputStream(dst);
 		ObjectOutputStream oos = new ObjectOutputStream(out);
 		oos.writeObject(byteZip);
-		oos.writeObject(huffCodes);
+		oos.writeObject(huffmanCodes);
 		oos.close();
 		out.close();
 	}

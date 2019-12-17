@@ -61,6 +61,29 @@ public class ThreadedBinaryTree {
 		threadInOrderBinaryTree(root);
 	}
 
+	public void threadPostOrderBinaryTree() {
+		threadPostOrderBinaryTree(root);
+	}
+	/**
+	 * @Description 先序遍历线索二叉树
+	 */
+	public void threadPreOrderIterator() {
+		ThreadedNode node = root;
+		loop : while(node != null) {
+			while(node.lNode != null && node.lType == 0) {
+				System.out.println(node.data);
+				node = node.lNode;
+			}
+			System.out.println(node.data);
+			if(node.rType == 1) {
+				node = node.rNode;
+			}
+			if(node.rNode == null) {
+				System.out.println(node.data);
+				break loop;
+			}
+		}
+	}
 	/**
 	 * @Description 中序线索遍历
 	 */
@@ -82,6 +105,10 @@ public class ThreadedBinaryTree {
 			// 替换遍历的节点
 			node = node.rNode;
 		}
+	}
+	
+	public void threadPostOrderIterator() {
+		
 	}
 
 	/**
@@ -142,6 +169,31 @@ public class ThreadedBinaryTree {
 		}
 	}
 
+	/**
+	 * @Description 后序线索二叉树
+	 */
+	private void threadPostOrderBinaryTree(ThreadedNode node) {
+		// 先处理左节点
+		if (node.lNode != null) {
+			threadPostOrderBinaryTree(node.lNode);
+		}
+		// 处理右节点
+		if (node.rNode != null) {
+			threadPostOrderBinaryTree(node.rNode);
+		}
+		// 处理当前节点的左指针
+		if (node.lNode == null) {
+			node.lNode = preNode;
+			node.lType = 1;
+		}
+		// 当前节点前驱节点的右指针
+		if (preNode != null && preNode.rNode == null) {
+			preNode.rNode = node;
+			preNode.rType = 1;
+		}
+		preNode = node;
+	}
+
 	public static void main(String[] args) throws Exception {
 		ThreadedBinaryTree tree = new ThreadedBinaryTree();
 		tree.root = tree.buildTreeNode(1, null, null);
@@ -151,9 +203,11 @@ public class ThreadedBinaryTree {
 		ThreadedNode n32 = tree.buildTreeNode(5, n21, "right");
 		ThreadedNode n33 = tree.buildTreeNode(6, n22, "left");
 		ThreadedNode n34 = tree.buildTreeNode(7, n22, "right");
-		// tree.preOrderTraversal();
-		// tree.threadInOrderBinaryTree();
-		tree.threadPreOrderBinaryTree();
-		// tree.threadPreOrderIterator(tree.root);
+		//tree.threadPreOrderBinaryTree();
+		//tree.threadPreOrderIterator();
+		
+		tree.threadPostOrderBinaryTree();
+		tree.threadPostOrderIterator();
 	}
+
 }
