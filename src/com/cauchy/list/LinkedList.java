@@ -153,7 +153,7 @@ public class LinkedList {
         Node curHead = head;
         for (int i = this.size(); i > 0; i -= num) {
             LinkedList curGroup = duplicate(this, num);
-            for (int y = 0; y < num; y++) {
+            for (int k = 0; k < num; k++) {
                 if (this.head.next != null) {
                     this.head = this.head.next;
                 }
