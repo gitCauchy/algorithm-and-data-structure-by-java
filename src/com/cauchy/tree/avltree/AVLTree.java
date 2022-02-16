@@ -1,157 +1,157 @@
 package com.cauchy.tree.avltree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName BinarySortTree.java
- * @Date 2019Äê12ÔÂ16ÈÕ
- * @Description Æ½ºâ¶ş²æÊ÷
+ * @Date 2019å¹´12æœˆ16æ—¥
+ * @Description å¹³è¡¡äºŒå‰æ ‘
  * @Version
  *
  */
 public class AVLTree {
-	Node root;
+    Node root;
 
-	/**
-	 * @param node
-	 * @Description Ïò¶ş²æÊ÷ÖĞÌí¼Ó½Úµã
-	 */
-	public void add(Node node) {
-		if (root == null) {
-			root = node;
-		} else {
-			root.add(node);
-		}
-	}
-	
-	public int height() {
-		return root.height();
-	}
+    /**
+     * @param node
+     * @Description å‘äºŒå‰æ ‘ä¸­æ·»åŠ èŠ‚ç‚¹
+     */
+    public void add(Node node) {
+        if (root == null) {
+            root = node;
+        } else {
+            root.add(node);
+        }
+    }
 
-	/**
-	 * 
-	 * @Description ¶ş²æÅÅĞòÊ÷ÖĞĞò±éÀú
-	 */
-	public void inOrderTraversal() {
-		System.out.println("IN ORDER TRAVERSAL");
-		root.inOrderTraversal();
-	}
+    public int height() {
+        return root.height();
+    }
 
-	/**
-	 * 
-	 * @param data
-	 * @return
-	 * @Description ¶ş²æÅÅĞòÊ÷²éÕÒ
-	 */
-	public Node search(int data) {
-		Node node = null;
-		if (root == null) {
-			return null;
-		} else {
-			node = root.search(data);
-		}
-		return node;
-	}
+    /**
+     *
+     * @Description äºŒå‰æ’åºæ ‘ä¸­åºéå†
+     */
+    public void inOrderTraversal() {
+        System.out.println("IN ORDER TRAVERSAL");
+        root.inOrderTraversal();
+    }
 
-	/**
-	 * 
-	 * @param data
-	 * @Description É¾³ı½Úµã
-	 */
-	public void delete(int data) {
-		if (root == null) {
-			return;
-		}
-		// ÕÒµ½Õâ¸ö½Úµã
-		Node target = search(data);
-		if (target == null) {
-			return;
-		}
-		// ÕÒµ½¸¸½Úµã
-		Node parent = searchParent(data);
-		// ´ıÉ¾³ıµÄ½ÚµãÊÇÒ¶×Ó½Úµã
-		if (target.lNode == null && target.rNode == null) {
-			// ÒªÉ¾³ıµÄÔªËØÊÇ¸¸½ÚµãµÄ×ó×Ó½Úµã
-			if (parent.lNode.data == data) {
-				parent.lNode = null;
-			}
-			// ÒªÉ¾³ıµÄÔªËØÊÇ¸¸½ÚµãµÄÓÒ×Ó½Úµã
-			if (parent.rNode.data == data) {
-				parent.rNode = null;
-			}
-			// ´ıÉ¾³ı½ÚµãÓĞÁ½¸öÒ¶×Ó½Úµã
-		} else if (target.lNode != null && target.rNode != null) {
-			// É¾³ıÓÒ×ÓÊ÷ÖĞ×îĞ¡µÄ½Úµã²¢»ñÈ¡µ½¸Ã½ÚµãµÄÖµ
-			int min = findMin(target.rNode);
-			// É¾³ı×îĞ¡½Úµã
-			delete(min);
-			// Ìæ»»Ä¿±ê½ÚµãÖĞµÄÖµ
-			target.data = min;
-			// ´ıÉ¾³ı½ÚµãÓĞÒ»¸öÒ¶×Ó½Úµã
-		} else {
-			if (target.lNode != null) {
-				// µ±Ç°½ÚµãÊÇ¸¸½ÚµãµÄ×ó×Ó½Úµã
-				if (parent.lNode.data == data) {
-					parent.lNode = target.lNode;
-					// µ±Ç°½ÚµãÊÇ¸¸½ÚµãµÄÓÒ×Ó½Úµã
-				} else {
-					parent.rNode = target.lNode;
-				}
-			} else { // target.rNode != null
-				if (parent.lNode.data == data) {
-					parent.lNode = target.rNode;
-				} else {
-					parent.rNode = target.rNode;
-				}
-			}
-		}
-	}
+    /**
+     *
+     * @param data
+     * @return
+     * @Description äºŒå‰æ’åºæ ‘æŸ¥æ‰¾
+     */
+    public Node search(int data) {
+        Node node = null;
+        if (root == null) {
+            return null;
+        } else {
+            node = root.search(data);
+        }
+        return node;
+    }
 
-	/**
-	 * 
-	 * @param node
-	 * @return
-	 * @Description ²éÕÒ×ÓÊ÷ÖĞ×îĞ¡µÄ½Úµã
-	 */
-	private int findMin(Node node) {
-		Node target = node;
+    /**
+     *
+     * @param data
+     * @Description åˆ é™¤èŠ‚ç‚¹
+     */
+    public void delete(int data) {
+        if (root == null) {
+            return;
+        }
+        // æ‰¾åˆ°è¿™ä¸ªèŠ‚ç‚¹
+        Node target = search(data);
+        if (target == null) {
+            return;
+        }
+        // æ‰¾åˆ°çˆ¶èŠ‚ç‚¹
+        Node parent = searchParent(data);
+        // å¾…åˆ é™¤çš„èŠ‚ç‚¹æ˜¯å¶å­èŠ‚ç‚¹
+        if (target.lNode == null && target.rNode == null) {
+            // è¦åˆ é™¤çš„å…ƒç´ æ˜¯çˆ¶èŠ‚ç‚¹çš„å·¦å­èŠ‚ç‚¹
+            if (parent.lNode.data == data) {
+                parent.lNode = null;
+            }
+            // è¦åˆ é™¤çš„å…ƒç´ æ˜¯çˆ¶èŠ‚ç‚¹çš„å³å­èŠ‚ç‚¹
+            if (parent.rNode.data == data) {
+                parent.rNode = null;
+            }
+            // å¾…åˆ é™¤èŠ‚ç‚¹æœ‰ä¸¤ä¸ªå¶å­èŠ‚ç‚¹
+        } else if (target.lNode != null && target.rNode != null) {
+            // åˆ é™¤å³å­æ ‘ä¸­æœ€å°çš„èŠ‚ç‚¹å¹¶è·å–åˆ°è¯¥èŠ‚ç‚¹çš„å€¼
+            int min = findMin(target.rNode);
+            // åˆ é™¤æœ€å°èŠ‚ç‚¹
+            delete(min);
+            // æ›¿æ¢ç›®æ ‡èŠ‚ç‚¹ä¸­çš„å€¼
+            target.data = min;
+            // å¾…åˆ é™¤èŠ‚ç‚¹æœ‰ä¸€ä¸ªå¶å­èŠ‚ç‚¹
+        } else {
+            if (target.lNode != null) {
+                // å½“å‰èŠ‚ç‚¹æ˜¯çˆ¶èŠ‚ç‚¹çš„å·¦å­èŠ‚ç‚¹
+                if (parent.lNode.data == data) {
+                    parent.lNode = target.lNode;
+                    // å½“å‰èŠ‚ç‚¹æ˜¯çˆ¶èŠ‚ç‚¹çš„å³å­èŠ‚ç‚¹
+                } else {
+                    parent.rNode = target.lNode;
+                }
+            } else { // target.rNode != null
+                if (parent.lNode.data == data) {
+                    parent.lNode = target.rNode;
+                } else {
+                    parent.rNode = target.rNode;
+                }
+            }
+        }
+    }
 
-		while (node.lNode != null) {
-			target = target.lNode;
-		}
-		// É¾³ı×îĞ¡µÄ½Úµã
-		// delete(target.data);
-		return target.data;
-	}
+    /**
+     *
+     * @param node
+     * @return
+     * @Description æŸ¥æ‰¾å­æ ‘ä¸­æœ€å°çš„èŠ‚ç‚¹
+     */
+    private int findMin(Node node) {
+        Node target = node;
 
-	/**
-	 * 
-	 * @param data
-	 * @return
-	 * @Description ¶ş²æÊ÷ÖĞ½Úµã²éÕÒ
-	 */
-	public Node searchParent(int data) {
-		if (root == null) {
-			return null;
-		} else {
-			return root.searchParent(data);
-		}
-	}
+        while (node.lNode != null) {
+            target = target.lNode;
+        }
+        // åˆ é™¤æœ€å°çš„èŠ‚ç‚¹
+        // delete(target.data);
+        return target.data;
+    }
 
-	public String toString() {
-		return "BinarySortTree [root=" + root + "]";
-	}
+    /**
+     *
+     * @param data
+     * @return
+     * @Description äºŒå‰æ ‘ä¸­èŠ‚ç‚¹æŸ¥æ‰¾
+     */
+    public Node searchParent(int data) {
+        if (root == null) {
+            return null;
+        } else {
+            return root.searchParent(data);
+        }
+    }
 
-	public static void main(String[] args) {
-		AVLTree tree = new AVLTree();
-		int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-		for (int i : arr) {
-			tree.add(new Node(i));
-		}
-		tree.inOrderTraversal();
-		int h = tree.height();
-		System.out.println(h);
+    public String toString() {
+        return "BinarySortTree [root=" + root + "]";
+    }
+
+    public static void main(String[] args) {
+        AVLTree tree = new AVLTree();
+        int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+        for (int i : arr) {
+            tree.add(new Node(i));
+        }
+        tree.inOrderTraversal();
+        int h = tree.height();
+        System.out.println(h);
 //		Node node = tree.search(5);
 //		System.out.println(node);
-	}
+    }
 }

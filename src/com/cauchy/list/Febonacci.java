@@ -4,8 +4,8 @@ package com.cauchy.list;
  * 
  * @author Cauchy
  * @ClassName Febonacci.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description ì³²¨ÄÇÆõÊıÁĞ
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description æ–æ³¢é‚£å¥‘æ•°åˆ—
  * @Version v0.1
  *
  */

@@ -1,213 +1,213 @@
 package com.cauchy.tree.linkedbinarytree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName ThreadedBinaryTree.java
- * @Date 2019Äê12ÔÂ12ÈÕ
- * @Description ÏßË÷¶ş²æÊ÷
+ * @Date 2019å¹´12æœˆ12æ—¥
+ * @Description çº¿ç´¢äºŒå‰æ ‘
  * @Version V0.1
  *
  */
 public class ThreadedBinaryTree {
-	/*
-	 * ¸ù½Úµã
-	 */
-	ThreadedNode root;
+    /*
+     * æ ¹èŠ‚ç‚¹
+     */
+    ThreadedNode root;
 
-	/*
-	 * ÁÙÊ±´æ´¢Ç°Çı½Úµã
-	 */
-	ThreadedNode preNode = null;
+    /*
+     * ä¸´æ—¶å­˜å‚¨å‰é©±èŠ‚ç‚¹
+     */
+    ThreadedNode preNode = null;
 
-	public ThreadedBinaryTree() {
-		root = null;
-	}
+    public ThreadedBinaryTree() {
+        root = null;
+    }
 
-	/**
-	 * 
-	 * @param data
-	 * @param fNode
-	 * @param nodeType
-	 * @return
-	 * @throws Exception
-	 * @Description ²åÈë½Úµã
-	 */
-	public ThreadedNode buildTreeNode(int data, ThreadedNode fNode, String nodeType) throws Exception {
-		ThreadedNode node = new ThreadedNode(data);
-		if (fNode != null) {
-			if (nodeType.equals("left")) {
-				fNode.lNode = node;
-			} else if (nodeType.equals("right")) {
-				fNode.rNode = node;
-			} else {
-				throw new Exception("No such type node");
-			}
-		}
-		return node;
-	}
+    /**
+     *
+     * @param data
+     * @param fNode
+     * @param nodeType
+     * @return
+     * @throws Exception
+     * @Description æ’å…¥èŠ‚ç‚¹
+     */
+    public ThreadedNode buildTreeNode(int data, ThreadedNode fNode, String nodeType) throws Exception {
+        ThreadedNode node = new ThreadedNode(data);
+        if (fNode != null) {
+            if (nodeType.equals("left")) {
+                fNode.lNode = node;
+            } else if (nodeType.equals("right")) {
+                fNode.rNode = node;
+            } else {
+                throw new Exception("No such type node");
+            }
+        }
+        return node;
+    }
 
-	/**
-	 * @Description ÏÈĞòÏßË÷¶ş²æÊ÷
-	 */
-	public void threadPreOrderBinaryTree() {
-		threadPreOrderBinaryTree(root);
-	}
+    /**
+     * @Description å…ˆåºçº¿ç´¢äºŒå‰æ ‘
+     */
+    public void threadPreOrderBinaryTree() {
+        threadPreOrderBinaryTree(root);
+    }
 
-	/**
-	 * @Description ÖĞĞòÏßË÷¶ş²æÊ÷
-	 */
-	public void threadInOrderBinaryTree() {
-		threadInOrderBinaryTree(root);
-	}
+    /**
+     * @Description ä¸­åºçº¿ç´¢äºŒå‰æ ‘
+     */
+    public void threadInOrderBinaryTree() {
+        threadInOrderBinaryTree(root);
+    }
 
-	public void threadPostOrderBinaryTree() {
-		threadPostOrderBinaryTree(root);
-	}
-	/**
-	 * @Description ÏÈĞò±éÀúÏßË÷¶ş²æÊ÷
-	 */
-	public void threadPreOrderIterator() {
-		ThreadedNode node = root;
-		loop : while(node != null) {
-			while(node.lNode != null && node.lType == 0) {
-				System.out.println(node.data);
-				node = node.lNode;
-			}
-			System.out.println(node.data);
-			if(node.rType == 1) {
-				node = node.rNode;
-			}
-			if(node.rNode == null) {
-				System.out.println(node.data);
-				break loop;
-			}
-		}
-	}
-	/**
-	 * @Description ÖĞĞòÏßË÷±éÀú
-	 */
-	public void threadInOrderIterator() {
-		// ÓÃÓÚ´æ´¢µ±Ç°±éÀúµÄ½Úµã
-		ThreadedNode node = root;
-		while (node != null) {
-			// Ñ­»·ÕÒµ½×î¿ªÊ¼µÄ½Úµã
-			while (node.lType == 0) {
-				node = node.lNode;
-			}
-			// ´òÓ¡µ±Ç°½ÚµãµÄÖµ
-			System.out.println(node.data);
-			// Èç¹ûµ±Ç°½ÚµãµÄÓÒÖ¸ÕëÖ¸ÏòµÄÊÇºó¼Ì½Úµã£¬¿ÉÄÜºó¼Ì½Úµã»¹ÓĞºó¼Ì½Úµã
-			while (node.rType == 1) {
-				node = node.rNode;
-				System.out.println(node.data);
-			}
-			// Ìæ»»±éÀúµÄ½Úµã
-			node = node.rNode;
-		}
-	}
-	
-	public void threadPostOrderIterator() {
-		
-	}
+    public void threadPostOrderBinaryTree() {
+        threadPostOrderBinaryTree(root);
+    }
+    /**
+     * @Description å…ˆåºéå†çº¿ç´¢äºŒå‰æ ‘
+     */
+    public void threadPreOrderIterator() {
+        ThreadedNode node = root;
+        loop : while(node != null) {
+            while(node.lNode != null && node.lType == 0) {
+                System.out.println(node.data);
+                node = node.lNode;
+            }
+            System.out.println(node.data);
+            if(node.rType == 1) {
+                node = node.rNode;
+            }
+            if(node.rNode == null) {
+                System.out.println(node.data);
+                break loop;
+            }
+        }
+    }
+    /**
+     * @Description ä¸­åºçº¿ç´¢éå†
+     */
+    public void threadInOrderIterator() {
+        // ç”¨äºå­˜å‚¨å½“å‰éå†çš„èŠ‚ç‚¹
+        ThreadedNode node = root;
+        while (node != null) {
+            // å¾ªç¯æ‰¾åˆ°æœ€å¼€å§‹çš„èŠ‚ç‚¹
+            while (node.lType == 0) {
+                node = node.lNode;
+            }
+            // æ‰“å°å½“å‰èŠ‚ç‚¹çš„å€¼
+            System.out.println(node.data);
+            // å¦‚æœå½“å‰èŠ‚ç‚¹çš„å³æŒ‡é’ˆæŒ‡å‘çš„æ˜¯åç»§èŠ‚ç‚¹ï¼Œå¯èƒ½åç»§èŠ‚ç‚¹è¿˜æœ‰åç»§èŠ‚ç‚¹
+            while (node.rType == 1) {
+                node = node.rNode;
+                System.out.println(node.data);
+            }
+            // æ›¿æ¢éå†çš„èŠ‚ç‚¹
+            node = node.rNode;
+        }
+    }
 
-	/**
-	 * @param x
-	 * @Description É¾³ı½Úµã
-	 */
-	public void deleteNode(int x) {
+    public void threadPostOrderIterator() {
 
-	}
+    }
 
-	private void threadPreOrderBinaryTree(ThreadedNode node) {
-		// ´¦Àíµ±Ç°½Úµã
-		if (node.lNode == null) {
-			node.lNode = preNode;
-			node.lType = 1;
-		}
-		if (preNode != null && preNode.rNode == null) {
-			preNode.rNode = node;
-			preNode.rType = 1;
-		}
-		preNode = node;
-		// ´¦Àí×ó½Úµã
-		if (node.lNode != null && node.lType == 0) {
-			threadPreOrderBinaryTree(node.lNode);
-		}
-		// ´¦ÀíÓÒ½Úµã
-		if (node.rNode != null && node.rType == 0) {
-			threadPreOrderBinaryTree(node.rNode);
-		}
-	}
+    /**
+     * @param x
+     * @Description åˆ é™¤èŠ‚ç‚¹
+     */
+    public void deleteNode(int x) {
 
-	/**
-	 * @param node
-	 * @Description ÖĞĞòÏßË÷¶ş²æÊ÷
-	 */
-	private void threadInOrderBinaryTree(ThreadedNode node) {
-		// ´¦Àí×ó×ÓÊ÷
-		if (node.lNode != null) {
-			threadInOrderBinaryTree(node.lNode);
-		}
-		// ´¦ÀíÇ°Çı½Úµã
-		if (node.lNode == null) {
-			// µ±Ç°½ÚµãµÄ×óÖ¸ÕëÖ¸ÏòÇ°Çı½Úµã£¬¸Ä±ä×óÖ¸ÕëÀàĞÍ
-			node.lNode = preNode;
-			node.lType = 1;
-		}
-		// ´¦ÀíÇ°Çı½ÚµãµÄÓÒÖ¸Õë
-		if (preNode != null && preNode.rNode == null) {
-			// Èç¹ûÇ°Çı½ÚµãµÄÓÒÖ¸ÕëÎª¿Õ£¬Ö¸Ïò´Ë½Úµã
-			preNode.rNode = node;
-			preNode.rType = 1;
-		}
-		// Ã¿´¦ÀíÒ»¸ö½Úµã£¬Õâ¸ö½Úµã¾ÍÊÇÏÂÒ»¸ö½ÚµãµÄµÄÇ°Çı½Úµã
-		preNode = node;
-		// ´¦ÀíÓÒ×ÓÊ÷
-		if (node.rNode != null) {
-			threadInOrderBinaryTree(node.rNode);
-		}
-	}
+    }
 
-	/**
-	 * @Description ºóĞòÏßË÷¶ş²æÊ÷
-	 */
-	private void threadPostOrderBinaryTree(ThreadedNode node) {
-		// ÏÈ´¦Àí×ó½Úµã
-		if (node.lNode != null) {
-			threadPostOrderBinaryTree(node.lNode);
-		}
-		// ´¦ÀíÓÒ½Úµã
-		if (node.rNode != null) {
-			threadPostOrderBinaryTree(node.rNode);
-		}
-		// ´¦Àíµ±Ç°½ÚµãµÄ×óÖ¸Õë
-		if (node.lNode == null) {
-			node.lNode = preNode;
-			node.lType = 1;
-		}
-		// µ±Ç°½ÚµãÇ°Çı½ÚµãµÄÓÒÖ¸Õë
-		if (preNode != null && preNode.rNode == null) {
-			preNode.rNode = node;
-			preNode.rType = 1;
-		}
-		preNode = node;
-	}
+    private void threadPreOrderBinaryTree(ThreadedNode node) {
+        // å¤„ç†å½“å‰èŠ‚ç‚¹
+        if (node.lNode == null) {
+            node.lNode = preNode;
+            node.lType = 1;
+        }
+        if (preNode != null && preNode.rNode == null) {
+            preNode.rNode = node;
+            preNode.rType = 1;
+        }
+        preNode = node;
+        // å¤„ç†å·¦èŠ‚ç‚¹
+        if (node.lNode != null && node.lType == 0) {
+            threadPreOrderBinaryTree(node.lNode);
+        }
+        // å¤„ç†å³èŠ‚ç‚¹
+        if (node.rNode != null && node.rType == 0) {
+            threadPreOrderBinaryTree(node.rNode);
+        }
+    }
 
-	public static void main(String[] args) throws Exception {
-		ThreadedBinaryTree tree = new ThreadedBinaryTree();
-		tree.root = tree.buildTreeNode(1, null, null);
-		ThreadedNode n21 = tree.buildTreeNode(2, tree.root, "left");
-		ThreadedNode n22 = tree.buildTreeNode(3, tree.root, "right");
-		ThreadedNode n31 = tree.buildTreeNode(4, n21, "left");
-		ThreadedNode n32 = tree.buildTreeNode(5, n21, "right");
-		ThreadedNode n33 = tree.buildTreeNode(6, n22, "left");
-		ThreadedNode n34 = tree.buildTreeNode(7, n22, "right");
-		//tree.threadPreOrderBinaryTree();
-		//tree.threadPreOrderIterator();
-		
-		tree.threadPostOrderBinaryTree();
-		tree.threadPostOrderIterator();
-	}
+    /**
+     * @param node
+     * @Description ä¸­åºçº¿ç´¢äºŒå‰æ ‘
+     */
+    private void threadInOrderBinaryTree(ThreadedNode node) {
+        // å¤„ç†å·¦å­æ ‘
+        if (node.lNode != null) {
+            threadInOrderBinaryTree(node.lNode);
+        }
+        // å¤„ç†å‰é©±èŠ‚ç‚¹
+        if (node.lNode == null) {
+            // å½“å‰èŠ‚ç‚¹çš„å·¦æŒ‡é’ˆæŒ‡å‘å‰é©±èŠ‚ç‚¹ï¼Œæ”¹å˜å·¦æŒ‡é’ˆç±»å‹
+            node.lNode = preNode;
+            node.lType = 1;
+        }
+        // å¤„ç†å‰é©±èŠ‚ç‚¹çš„å³æŒ‡é’ˆ
+        if (preNode != null && preNode.rNode == null) {
+            // å¦‚æœå‰é©±èŠ‚ç‚¹çš„å³æŒ‡é’ˆä¸ºç©ºï¼ŒæŒ‡å‘æ­¤èŠ‚ç‚¹
+            preNode.rNode = node;
+            preNode.rType = 1;
+        }
+        // æ¯å¤„ç†ä¸€ä¸ªèŠ‚ç‚¹ï¼Œè¿™ä¸ªèŠ‚ç‚¹å°±æ˜¯ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„çš„å‰é©±èŠ‚ç‚¹
+        preNode = node;
+        // å¤„ç†å³å­æ ‘
+        if (node.rNode != null) {
+            threadInOrderBinaryTree(node.rNode);
+        }
+    }
+
+    /**
+     * @Description ååºçº¿ç´¢äºŒå‰æ ‘
+     */
+    private void threadPostOrderBinaryTree(ThreadedNode node) {
+        // å…ˆå¤„ç†å·¦èŠ‚ç‚¹
+        if (node.lNode != null) {
+            threadPostOrderBinaryTree(node.lNode);
+        }
+        // å¤„ç†å³èŠ‚ç‚¹
+        if (node.rNode != null) {
+            threadPostOrderBinaryTree(node.rNode);
+        }
+        // å¤„ç†å½“å‰èŠ‚ç‚¹çš„å·¦æŒ‡é’ˆ
+        if (node.lNode == null) {
+            node.lNode = preNode;
+            node.lType = 1;
+        }
+        // å½“å‰èŠ‚ç‚¹å‰é©±èŠ‚ç‚¹çš„å³æŒ‡é’ˆ
+        if (preNode != null && preNode.rNode == null) {
+            preNode.rNode = node;
+            preNode.rType = 1;
+        }
+        preNode = node;
+    }
+
+    public static void main(String[] args) throws Exception {
+        ThreadedBinaryTree tree = new ThreadedBinaryTree();
+        tree.root = tree.buildTreeNode(1, null, null);
+        ThreadedNode n21 = tree.buildTreeNode(2, tree.root, "left");
+        ThreadedNode n22 = tree.buildTreeNode(3, tree.root, "right");
+        ThreadedNode n31 = tree.buildTreeNode(4, n21, "left");
+        ThreadedNode n32 = tree.buildTreeNode(5, n21, "right");
+        ThreadedNode n33 = tree.buildTreeNode(6, n22, "left");
+        ThreadedNode n34 = tree.buildTreeNode(7, n22, "right");
+        //tree.threadPreOrderBinaryTree();
+        //tree.threadPreOrderIterator();
+
+        tree.threadPostOrderBinaryTree();
+        tree.threadPostOrderIterator();
+    }
 
 }

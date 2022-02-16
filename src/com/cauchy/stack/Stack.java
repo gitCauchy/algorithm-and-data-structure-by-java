@@ -3,84 +3,84 @@ package com.cauchy.stack;
 import java.util.Arrays;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName Stack.java
- * @Date 2019Äê12ÔÂ4ÈÕ
- * @Description Õ»
+ * @Date 2019å¹´12æœˆ4æ—¥
+ * @Description æ ˆ
  * @Version V0.1
  *
  */
 public class Stack {
-	/*
-	 * ³õÊ¼»¯³¤¶ÈÎª10
-	 */
-	private static final int INITSIZE = 10;
-	/*
-	 * ´æ´¢ÔªËØµÄÊı×é
-	 */
-	private int[] elements;
-	/*
-	 * ÓÎ±ê
-	 */
-	int index = 0;
+    /*
+     * åˆå§‹åŒ–é•¿åº¦ä¸º10
+     */
+    private static final int INITSIZE = 10;
+    /*
+     * å­˜å‚¨å…ƒç´ çš„æ•°ç»„
+     */
+    private int[] elements;
+    /*
+     * æ¸¸æ ‡
+     */
+    int index = 0;
 
-	/**
-	 * @description ÅĞ¶ÏÊÇ·ñÎª¿ÕÕ»
-	 * @return ÊÇ·ñÎª¿ÕÕ»
-	 */
-	public boolean isEmpty() {
-		return index == 0;
-	}
+    /**
+     * @description åˆ¤æ–­æ˜¯å¦ä¸ºç©ºæ ˆ
+     * @return æ˜¯å¦ä¸ºç©ºæ ˆ
+     */
+    public boolean isEmpty() {
+        return index == 0;
+    }
 
-	/**
-	 * @description ³õÊ¼»¯Õ»
-	 */
-	public Stack() {
-		elements = new int[INITSIZE];
-	}
+    /**
+     * @description åˆå§‹åŒ–æ ˆ
+     */
+    public Stack() {
+        elements = new int[INITSIZE];
+    }
 
-	/**
-	 * @description Ñ¹Õ»²Ù×÷
-	 * @param e Ñ¹ÈëµÄÊı¾İÔªËØ
-	 */
-	public void push(int e) {
-		if (index < 9) {
-			elements[index++] = e;
-		} else {
-			int newArray[] = new int[elements.length * 2];
-			System.arraycopy(elements, 0, newArray, 0, elements.length);
-			elements = newArray;
-			elements[index++] = e;
-			// index ++;
-		}
-	}
+    /**
+     * @description å‹æ ˆæ“ä½œ
+     * @param e å‹å…¥çš„æ•°æ®å…ƒç´ 
+     */
+    public void push(int e) {
+        if (index < 9) {
+            elements[index++] = e;
+        } else {
+            int newArray[] = new int[elements.length * 2];
+            System.arraycopy(elements, 0, newArray, 0, elements.length);
+            elements = newArray;
+            elements[index++] = e;
+            // index ++;
+        }
+    }
 
-	/**
-	 * @description µ¯Õ»²Ù×÷
-	 * @return µ¯³öµÄÔªËØ
-	 */
-	public int pop() {
-		int e = elements[--index];
-		// index --;
-		if (index < elements.length / 2 && index > 10) {
-			int newArray[] = new int[elements.length / 2];
-			System.arraycopy(elements, 0, newArray, 0, elements.length);
-			elements = newArray;
-		}
-		return e;
-	}
+    /**
+     * @description å¼¹æ ˆæ“ä½œ
+     * @return å¼¹å‡ºçš„å…ƒç´ 
+     */
+    public int pop() {
+        int e = elements[--index];
+        // index --;
+        if (index < elements.length / 2 && index > 10) {
+            int newArray[] = new int[elements.length / 2];
+            System.arraycopy(elements, 0, newArray, 0, elements.length);
+            elements = newArray;
+        }
+        return e;
+    }
 
-	/**
-	 * @description ·µ»ØÕ»Éî¶È
-	 * @return Õ»Éî¶È
-	 */
-	public int size() {
-		return index;
-	}
+    /**
+     * @description è¿”å›æ ˆæ·±åº¦
+     * @return æ ˆæ·±åº¦
+     */
+    public int size() {
+        return index;
+    }
 
-	public String toString() {
-		return "Stack [elements=" + Arrays.toString(elements) + ", index=" + index + "]";
-	}
+    public String toString() {
+        return "Stack [elements=" + Arrays.toString(elements) + ", index=" + index + "]";
+    }
 
 }

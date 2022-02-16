@@ -1,50 +1,50 @@
 package com.cauchy.tree.huffmantree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName CodeNode.java
- * @Date 2019Äê12ÔÂ16ÈÕ
- * @Description ºÕ·òÂü±àÂë½Úµã
+ * @Date 2019å¹´12æœˆ16æ—¥
+ * @Description èµ«å¤«æ›¼ç¼–ç èŠ‚ç‚¹
  * @Version V0.1
  *
  */
 public class CodeNode implements Comparable<CodeNode> {
-	/*
-	 * È¨Öµ
-	 */
-	int weight;
-	/*
-	 * ×ó½Úµã
-	 */
-	CodeNode lNode;
-	/*
-	 * ÓÒ½Úµã
-	 */
-	CodeNode rNode;
-	/*
-	 * Êı¾İ
-	 */
-	Byte data;
+    /*
+     * æƒå€¼
+     */
+    int weight;
+    /*
+     * å·¦èŠ‚ç‚¹
+     */
+    CodeNode lNode;
+    /*
+     * å³èŠ‚ç‚¹
+     */
+    CodeNode rNode;
+    /*
+     * æ•°æ®
+     */
+    Byte data;
 
-	public CodeNode(int weight, Byte data) {
-		this.weight = weight;
-		this.data = data;
-	}
+    public CodeNode(int weight, Byte data) {
+        this.weight = weight;
+        this.data = data;
+    }
 
-	public int compareTo(CodeNode o) {
-		if (o.weight > this.weight) {
-			return 1;
-		} else if (o.weight < this.weight) {
-			return -1;
-		} else {
-			return 0;
-		}
-	}
+    public int compareTo(CodeNode o) {
+        if (o.weight > this.weight) {
+            return 1;
+        } else if (o.weight < this.weight) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 
-	public String toString() {
-		return "CodeNode [weight=" + weight + ", data=" + data + "]";
-	}
-	
-	
+    public String toString() {
+        return "CodeNode [weight=" + weight + ", data=" + data + "]";
+    }
+
+
 }

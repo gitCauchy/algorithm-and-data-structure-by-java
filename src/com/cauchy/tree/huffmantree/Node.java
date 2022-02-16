@@ -1,43 +1,43 @@
 package com.cauchy.tree.huffmantree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName Node.java
- * @Date 2019Äê12ÔÂ16ÈÕ
- * @Description ºÕ·òÂüÊ÷½Úµã
+ * @Date 2019å¹´12æœˆ16æ—¥
+ * @Description èµ«å¤«æ›¼æ ‘èŠ‚ç‚¹
  * @Version V0.1
  *
  */
 public class Node implements Comparable<Node> {
-	/*
-	 * È¨Öµ
-	 */
-	int value;
-	/*
-	 * ×ó½Úµã
-	 */
-	Node lNode;
-	/*
-	 * ÓÒ½Úµã
-	 */
-	Node rNode;
+    /*
+     * æƒå€¼
+     */
+    int value;
+    /*
+     * å·¦èŠ‚ç‚¹
+     */
+    Node lNode;
+    /*
+     * å³èŠ‚ç‚¹
+     */
+    Node rNode;
 
-	public Node(int value) {
-		this.value = value;
-	}
+    public Node(int value) {
+        this.value = value;
+    }
 
-	public int compareTo(Node o) {
-		if (this.value == o.value) {
-			return 0;
-		} else if (this.value > o.value) {
-			return -1;
-		} else {
-			return 1;
-		}
-	}
+    public int compareTo(Node o) {
+        if (this.value == o.value) {
+            return 0;
+        } else if (this.value > o.value) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
 
-	public String toString() {
-		return "Node [value=" + value + "]";
-	}
+    public String toString() {
+        return "Node [value=" + value + "]";
+    }
 }

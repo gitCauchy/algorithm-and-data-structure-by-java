@@ -5,34 +5,34 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName HuffmanTree.java
- * @Date 2019Äê12ÔÂ16ÈÕ
- * @Description ºÕ·òÂüÊ÷
+ * @Date 2019å¹´12æœˆ16æ—¥
+ * @Description èµ«å¤«æ›¼æ ‘
  * @Version V0.1
  *
  */
 public class HuffmanTree {
-	public static Node createHuffmanTree(int[] arr) {
-		List<Node> nodes = new ArrayList<Node>();
-		// ÅÅĞò
-		for(int value : arr) {
-			nodes.add(new Node(value));
-		}
-		// Ñ­»·´¦Àí
-		while(nodes.size() > 1) {
-			Collections.sort(nodes);
-			// È¡³öÈ¨Öµ×îĞ¡µÄÁ½¸ö×ÓÊ÷
-			Node left = nodes.get(nodes.size() - 1);
-			Node right = nodes.get(nodes.size() - 2);
-			Node parent = new Node(left.value + right.value);
-			parent.lNode = left;
-			parent.rNode = right;
-			nodes.remove(left);
-			nodes.remove(right);
-			nodes.add(parent);
-		}
-		return nodes.get(0);
-	}
+    public static Node createHuffmanTree(int[] arr) {
+        List<Node> nodes = new ArrayList<Node>();
+        // æ’åº
+        for(int value : arr) {
+            nodes.add(new Node(value));
+        }
+        // å¾ªç¯å¤„ç†
+        while(nodes.size() > 1) {
+            Collections.sort(nodes);
+            // å–å‡ºæƒå€¼æœ€å°çš„ä¸¤ä¸ªå­æ ‘
+            Node left = nodes.get(nodes.size() - 1);
+            Node right = nodes.get(nodes.size() - 2);
+            Node parent = new Node(left.value + right.value);
+            parent.lNode = left;
+            parent.rNode = right;
+            nodes.remove(left);
+            nodes.remove(right);
+            nodes.add(parent);
+        }
+        return nodes.get(0);
+    }
 }

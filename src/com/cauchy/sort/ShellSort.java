@@ -2,34 +2,34 @@ package com.cauchy.sort;
 
 import java.util.Arrays;
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName ShellSort.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description Ï£¶ûÅÅĞò
- * @Version 
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description å¸Œå°”æ’åº
+ * @Version
  *
  */
 public class ShellSort {
 
-	public static void main(String[] args) {
-		int[] arr = { 2, 1, 5, 4, 7, 6, 0, 9, 1, 7, 4, 2 };
-		shellSort(arr);
-		System.out.println(Arrays.toString(arr));
-	}
+    public static void main(String[] args) {
+        int[] arr = { 2, 1, 5, 4, 7, 6, 0, 9, 1, 7, 4, 2 };
+        shellSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
 
-	public static void shellSort(int[] arr) {
-		// ±éÀúËùÓĞµÄ²½³¤
-		for (int d = arr.length / 2; d > 0; d /= 2) {
-			for (int i = d; i < arr.length; i++) {
-				for (int j = i - d; j >= 0; j -= d) {
-					if (arr[j] > arr[j + d]) {
-						int tmp = arr[j];
-						arr[j] = arr[j + d];
-						arr[j + d] = tmp;
-					}
-				}
-			}
-		}
-	}
+    public static void shellSort(int[] arr) {
+        // éå†æ‰€æœ‰çš„æ­¥é•¿
+        for (int d = arr.length / 2; d > 0; d /= 2) {
+            for (int i = d; i < arr.length; i++) {
+                for (int j = i - d; j >= 0; j -= d) {
+                    if (arr[j] > arr[j + d]) {
+                        int tmp = arr[j];
+                        arr[j] = arr[j + d];
+                        arr[j + d] = tmp;
+                    }
+                }
+            }
+        }
+    }
 }

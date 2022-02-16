@@ -3,8 +3,8 @@ package com.cauchy.list;
 /**
  * @author Cauchy
  * @ClassName LinkedList.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description Á´±í
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description é“¾è¡¨
  * @Version
  */
 public class LinkedList {
@@ -31,8 +31,8 @@ public class LinkedList {
     }
 
     /**
-     * @return Á´±í³¤¶È
-     * @description Á´±í³¤¶È
+     * @return é“¾è¡¨é•¿åº¦
+     * @description é“¾è¡¨é•¿åº¦
      */
     public int size() {
         int size = 0;
@@ -45,12 +45,12 @@ public class LinkedList {
     }
 
     /**
-     * @param loc Î»ÖÃ
-     * @param e   ´ı²åÈëÔªËØ
-     * @description ²åÈëÔªËØ
+     * @param loc ä½ç½®
+     * @param e   å¾…æ’å…¥å…ƒç´ 
+     * @description æ’å…¥å…ƒç´ 
      */
     public void insert(int loc, int e) {
-        // ÏÈÕÒµ½loc - 1 Î»ÖÃ£º
+        // å…ˆæ‰¾åˆ°loc - 1 ä½ç½®ï¼š
         Node node = new Node(e, null);
         node.data = e;
         if (loc == 0) {
@@ -68,8 +68,8 @@ public class LinkedList {
     }
 
     /**
-     * @param loc ÔÚÁ´±íÖĞµÄÎ»ÖÃ
-     * @description É¾³ıÁ´±íÖĞÄ³¸ö½ÚµãµÄÔªËØ
+     * @param loc åœ¨é“¾è¡¨ä¸­çš„ä½ç½®
+     * @description åˆ é™¤é“¾è¡¨ä¸­æŸä¸ªèŠ‚ç‚¹çš„å…ƒç´ 
      */
     public void delete(int loc) {
         Node p = head;
@@ -80,28 +80,28 @@ public class LinkedList {
     }
 
     /**
-     * @return ÊÇ·ñÎª¿Õ
-     * @description ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿ÕÁ´
+     * @return æ˜¯å¦ä¸ºç©º
+     * @description åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©ºé“¾
      */
     public boolean isEmpty() {
         return head == null;
     }
 
     /**
-     * @description Á´±í±éÀú
+     * @description é“¾è¡¨éå†
      */
     public void traversal() {
         Node p = head;
-        while (p != null) { // Ä³¸ö½ÚµãµÄÏÂÒ»¸ö½Úµã²»Îª¿Õ
+        while (p != null) { // æŸä¸ªèŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ä¸ºç©º
             System.out.print(p.data + "--");
             p = p.next;
         }
     }
 
     /**
-     * @param loc Á´±íÖĞµÄÎ»ÖÃ
-     * @return data ½ÚµãÖĞµÄÔªËØ
-     * @description »ñÈ¡Ä³¸öÔªËØÔÚÁ´±íÖĞµÄÎ»ÖÃ
+     * @param loc é“¾è¡¨ä¸­çš„ä½ç½®
+     * @return data èŠ‚ç‚¹ä¸­çš„å…ƒç´ 
+     * @description è·å–æŸä¸ªå…ƒç´ åœ¨é“¾è¡¨ä¸­çš„ä½ç½®
      */
     public int getElem(int loc) {
         Node p = head;
@@ -112,9 +112,9 @@ public class LinkedList {
     }
 
     /**
-     * @param e ½ÚµãµÄÔªËØ
-     * @return loc ÔªËØµÄÎ»ÖÃ
-     * @description »ñÈ¡Ä³¸öÎ»ÖÃÔªËØÔÚÁ´±íÖĞµÄÎ»ÖÃ
+     * @param e èŠ‚ç‚¹çš„å…ƒç´ 
+     * @return loc å…ƒç´ çš„ä½ç½®
+     * @description è·å–æŸä¸ªä½ç½®å…ƒç´ åœ¨é“¾è¡¨ä¸­çš„ä½ç½®
      */
     public int getLocation(int e) {
         int loc = 0;
@@ -127,25 +127,25 @@ public class LinkedList {
     }
 
     /**
-     * @description µ¥Á´±í·´×ª
+     * @description å•é“¾è¡¨åè½¬
      */
     public void reverse() {
         Node pre = null, cur = head;
-        // while Ñ­»·ÖªµÀÍêÈ«±éÀúÕû¸öÁ´±í
+        // while å¾ªç¯çŸ¥é“å®Œå…¨éå†æ•´ä¸ªé“¾è¡¨
         while (cur != null) {
             Node tmp = cur.next;
             cur.next = pre;
             pre = cur;
             cur = tmp;
         }
-        // ·´×ªÖ®ºó½«×îºóµÄ cur Ö¸Õë¸³Öµ¸øÍ·Ö¸Õë
+        // åè½¬ä¹‹åå°†æœ€åçš„ cur æŒ‡é’ˆèµ‹å€¼ç»™å¤´æŒ‡é’ˆ
         head = pre;
     }
 
 
     /**
-     * @param num Ã¿×é½ÚµãÊıÁ¿
-     * @description ·Ö×é·´×ªµ¥Á´±í
+     * @param num æ¯ç»„èŠ‚ç‚¹æ•°é‡
+     * @description åˆ†ç»„åè½¬å•é“¾è¡¨
      */
     public void reverseByGroup(int num) {
 
@@ -159,14 +159,14 @@ public class LinkedList {
                 }
             }
             Node p = curHead;
-            // ¶¨Î»ÏÂÒ»×éµÄÎ»ÖÃ
+            // å®šä½ä¸‹ä¸€ç»„çš„ä½ç½®
             for (int j = 0; j < num; j++) {
-                // Èç¹û¸ÃÁ´±í³¤¶ÈĞ¡ÓÚ k ,²»ĞèÒª·´×ª
+                // å¦‚æœè¯¥é“¾è¡¨é•¿åº¦å°äº k ,ä¸éœ€è¦åè½¬
                 if (p.next != null) {
                     p = p.next;
                 }
             }
-            // ½«¸´ÖÆµÄÁ´±í×ö·´×ª
+            // å°†å¤åˆ¶çš„é“¾è¡¨åšåè½¬
             curGroup.reverse();
             tempList.jointList(curGroup);
             curHead = p;
@@ -176,8 +176,8 @@ public class LinkedList {
     }
 
     /**
-     * @param targetList ´ıÁ¬½ÓÄ¿±êÁ´±í
-     * @description Á¬½Óµ±Ç°Á´±íºÍÒ»¸öĞÂÁ´±í
+     * @param targetList å¾…è¿æ¥ç›®æ ‡é“¾è¡¨
+     * @description è¿æ¥å½“å‰é“¾è¡¨å’Œä¸€ä¸ªæ–°é“¾è¡¨
      */
     public void jointList(LinkedList targetList) {
         if (this.head == null) {
@@ -185,7 +185,7 @@ public class LinkedList {
             return;
         }
         Node pointer = this.head;
-        // ÕÒµ½Ç°Ò»¸öÁ´±íµÄÎ²Ö¸Õë
+        // æ‰¾åˆ°å‰ä¸€ä¸ªé“¾è¡¨çš„å°¾æŒ‡é’ˆ
         while (pointer.next != null) {
             pointer = pointer.next;
         }
@@ -197,10 +197,10 @@ public class LinkedList {
     }
 
     /**
-     * @param oriList Ô­Ê¼Á´±í
-     * @param num     ¸´ÖÆ½ÚµãµÄÊıÁ¿
-     * @return ¸±±¾Á´±í
-     * @description ¸´ÖÆÒ»¸öÁ´±í²¿·Ö½Úµã
+     * @param oriList åŸå§‹é“¾è¡¨
+     * @param num     å¤åˆ¶èŠ‚ç‚¹çš„æ•°é‡
+     * @return å‰¯æœ¬é“¾è¡¨
+     * @description å¤åˆ¶ä¸€ä¸ªé“¾è¡¨éƒ¨åˆ†èŠ‚ç‚¹
      */
     public LinkedList duplicate(LinkedList oriList, int num) {
         LinkedList duplicateList = new LinkedList();

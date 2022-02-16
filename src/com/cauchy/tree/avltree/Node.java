@@ -1,186 +1,186 @@
 package com.cauchy.tree.avltree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName Node.java
- * @Date 2019Äê12ÔÂ17ÈÕ
- * @Description Æ½ºâ¶ş²æÊ÷½Úµã
+ * @Date 2019å¹´12æœˆ17æ—¥
+ * @Description å¹³è¡¡äºŒå‰æ ‘èŠ‚ç‚¹
  * @Version
  *
  */
 public class Node {
-	/*
-	 * Êı¾İ
-	 */
-	int data;
-	/*
-	 * ×ó½Úµã
-	 */
-	Node lNode;
-	/*
-	 * ÓÒ½Úµã
-	 */
-	Node rNode;
+    /*
+     * æ•°æ®
+     */
+    int data;
+    /*
+     * å·¦èŠ‚ç‚¹
+     */
+    Node lNode;
+    /*
+     * å³èŠ‚ç‚¹
+     */
+    Node rNode;
 
-	/**
-	 * 
-	 * @param node
-	 * @Description Ïò×ÓÊ÷ÖĞÌí¼Ó½Úµã
-	 */
-	public void add(Node node) {
-		if (node == null) {
-			return;
-		}
-		// ÅĞ¶Ï´«ÈëµÄ½ÚµãÖµ±Èµ±Ç°µÄ½Úµã´ó»¹ÊÇĞ¡
-		if (node.data < this.data) {
-			// Èç¹û×ó½ÚµãÎª¿Õ
-			if (this.lNode == null) {
-				this.lNode = node;
-			} else {
-				this.lNode.add(node);
-			}
-		} else {
-			// Èç¹ûÓÒ½ÚµãÎª¿Õ
-			if (this.rNode == null) {
-				this.rNode = node;
-			} else {
-				this.rNode.add(node);
-			}
-		}
-		// ¼ì²éÊÇ·ñÊÇÆ½ºâ¶ş²æÊ÷
-		if (lNodeHeight() - rNodeHeight() >= 2) { // ÓÒĞı×ª
-			if (lNode != null && lNode.lNodeHeight() < lNode.rNodeHeight()) {
-				lNode.leftRotate();
-			}
-			rightRotate();
-		}
-		if (lNodeHeight() - rNodeHeight() >= -2) { // ×óĞı×ª
-			if (rNode != null && rNode.rNodeHeight() < rNode.lNodeHeight()) {
-				rNode.rightRotate();
-			}
-			leftRotate();
-		}
-	}
+    /**
+     *
+     * @param node
+     * @Description å‘å­æ ‘ä¸­æ·»åŠ èŠ‚ç‚¹
+     */
+    public void add(Node node) {
+        if (node == null) {
+            return;
+        }
+        // åˆ¤æ–­ä¼ å…¥çš„èŠ‚ç‚¹å€¼æ¯”å½“å‰çš„èŠ‚ç‚¹å¤§è¿˜æ˜¯å°
+        if (node.data < this.data) {
+            // å¦‚æœå·¦èŠ‚ç‚¹ä¸ºç©º
+            if (this.lNode == null) {
+                this.lNode = node;
+            } else {
+                this.lNode.add(node);
+            }
+        } else {
+            // å¦‚æœå³èŠ‚ç‚¹ä¸ºç©º
+            if (this.rNode == null) {
+                this.rNode = node;
+            } else {
+                this.rNode.add(node);
+            }
+        }
+        // æ£€æŸ¥æ˜¯å¦æ˜¯å¹³è¡¡äºŒå‰æ ‘
+        if (lNodeHeight() - rNodeHeight() >= 2) { // å³æ—‹è½¬
+            if (lNode != null && lNode.lNodeHeight() < lNode.rNodeHeight()) {
+                lNode.leftRotate();
+            }
+            rightRotate();
+        }
+        if (lNodeHeight() - rNodeHeight() >= -2) { // å·¦æ—‹è½¬
+            if (rNode != null && rNode.rNodeHeight() < rNode.lNodeHeight()) {
+                rNode.rightRotate();
+            }
+            leftRotate();
+        }
+    }
 
-	private void leftRotate() {
-		// 1 ´´½¨Ò»¸öĞÂ½Úµã
-		Node newLeft = new Node(this.data);
-		// 2 ĞÂ½ÚµãµÄ×ó½ÚµãÎªµ±Ç°½ÚµãµÄ×ó½ÚµãµÄÖµ
-		newLeft.lNode = this.lNode;
-		// 3ĞÂ½ÚµãµÄÓÒ½ÚµãÎªµ±Ç°½ÚµãÓÒ½ÚµãµÄ×ó½Úµã
-		newLeft.rNode = this.rNode.lNode;
-		// 4µ±Ç°½ÚµãµÄÖµÉèÖÃÎªµ±Ç°½ÚµãÓÒ½ÚµãµÄÖµ
-		this.data = this.rNode.data;
-		// 5µ±Ç°½ÚµãµÄÓÒ½ÚµãÎªÓÒ½ÚµãµÄÓÒ½Úµã
-		this.rNode = this.rNode.rNode;
-		// 6×ó½ÚµãÉèÖÃÎªµ±Ç°½ÚµãµÄ×ó½Úµã
-		this.lNode = newLeft;
-	}
+    private void leftRotate() {
+        // 1 åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹
+        Node newLeft = new Node(this.data);
+        // 2 æ–°èŠ‚ç‚¹çš„å·¦èŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹çš„å·¦èŠ‚ç‚¹çš„å€¼
+        newLeft.lNode = this.lNode;
+        // 3æ–°èŠ‚ç‚¹çš„å³èŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹å³èŠ‚ç‚¹çš„å·¦èŠ‚ç‚¹
+        newLeft.rNode = this.rNode.lNode;
+        // 4å½“å‰èŠ‚ç‚¹çš„å€¼è®¾ç½®ä¸ºå½“å‰èŠ‚ç‚¹å³èŠ‚ç‚¹çš„å€¼
+        this.data = this.rNode.data;
+        // 5å½“å‰èŠ‚ç‚¹çš„å³èŠ‚ç‚¹ä¸ºå³èŠ‚ç‚¹çš„å³èŠ‚ç‚¹
+        this.rNode = this.rNode.rNode;
+        // 6å·¦èŠ‚ç‚¹è®¾ç½®ä¸ºå½“å‰èŠ‚ç‚¹çš„å·¦èŠ‚ç‚¹
+        this.lNode = newLeft;
+    }
 
-	private void rightRotate() {
-		// 1´´½¨Ò»¸öĞÂ½Úµã£¬ÖµÎªµ±Ç°½ÚµãµÄÖµ
-		Node newRight = new Node(this.data);
-		// 2°Ñµ±Ç°½ÚµãµÄÓÒ×ÓÊ÷µÈÓÚĞÂ½ÚµãµÄÓÒ×ÓÊ÷
-		newRight.rNode = this.rNode;
-		// 3°ÑĞÂ½ÚµãµÄ×ó×ÓÊ÷ÉèÖÃÎªµ±Ç°½Úµã×ó×ÓÊ÷µÄÓÒ×ÓÊ÷
-		newRight.lNode = this.lNode.rNode;
-		// 4°Ñµ±Ç°½ÚµãµÄÖµÉèÖÃÎª×ó×Ó½ÚµãµÄÖµ
-		this.data = this.lNode.data;
-		// 5°Ñµ±Ç°½ÚµãµÄ×ó×ÓÊ÷ÉèÖÃÎª×ó×ÓÊ÷µÄ×ó×ÓÊ÷
-		this.lNode = this.lNode.lNode;
-		// 6µ±Ç°½ÚµãµÄÓÒ×ÓÊ÷ÉèÖÃÎªÓÒ½Úµã
-		this.rNode = newRight;
-	}
+    private void rightRotate() {
+        // 1åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹ï¼Œå€¼ä¸ºå½“å‰èŠ‚ç‚¹çš„å€¼
+        Node newRight = new Node(this.data);
+        // 2æŠŠå½“å‰èŠ‚ç‚¹çš„å³å­æ ‘ç­‰äºæ–°èŠ‚ç‚¹çš„å³å­æ ‘
+        newRight.rNode = this.rNode;
+        // 3æŠŠæ–°èŠ‚ç‚¹çš„å·¦å­æ ‘è®¾ç½®ä¸ºå½“å‰èŠ‚ç‚¹å·¦å­æ ‘çš„å³å­æ ‘
+        newRight.lNode = this.lNode.rNode;
+        // 4æŠŠå½“å‰èŠ‚ç‚¹çš„å€¼è®¾ç½®ä¸ºå·¦å­èŠ‚ç‚¹çš„å€¼
+        this.data = this.lNode.data;
+        // 5æŠŠå½“å‰èŠ‚ç‚¹çš„å·¦å­æ ‘è®¾ç½®ä¸ºå·¦å­æ ‘çš„å·¦å­æ ‘
+        this.lNode = this.lNode.lNode;
+        // 6å½“å‰èŠ‚ç‚¹çš„å³å­æ ‘è®¾ç½®ä¸ºå³èŠ‚ç‚¹
+        this.rNode = newRight;
+    }
 
-	/**
-	 * @Description ¶ş²æÅÅĞòÊ÷ÖĞĞò±éÀú
-	 */
-	public void inOrderTraversal() {
-		if (lNode != null) {
-			lNode.inOrderTraversal();
-		}
-		System.out.print(data + "-");
-		if (rNode != null) {
-			rNode.inOrderTraversal();
-		}
-	}
+    /**
+     * @Description äºŒå‰æ’åºæ ‘ä¸­åºéå†
+     */
+    public void inOrderTraversal() {
+        if (lNode != null) {
+            lNode.inOrderTraversal();
+        }
+        System.out.print(data + "-");
+        if (rNode != null) {
+            rNode.inOrderTraversal();
+        }
+    }
 
-	/**
-	 * 
-	 * @param data
-	 * @return
-	 * @Description ²éÕÒ½Úµã
-	 */
-	public Node search(int data) {
-		Node node = null;
-		if (this.data == data) {
-			node = this;
-		} else if (this.data > data) {
-			node = lNode.search(data);
-		} else {
-			node = rNode.search(data);
-		}
-		return node;
-	}
+    /**
+     *
+     * @param data
+     * @return
+     * @Description æŸ¥æ‰¾èŠ‚ç‚¹
+     */
+    public Node search(int data) {
+        Node node = null;
+        if (this.data == data) {
+            node = this;
+        } else if (this.data > data) {
+            node = lNode.search(data);
+        } else {
+            node = rNode.search(data);
+        }
+        return node;
+    }
 
-	/**
-	 * 
-	 * @param data
-	 * @return
-	 * @Description ²éÕÒ¸¸½Úµã
-	 */
-	public Node searchParent(int data) {
-		if ((this.lNode != null && this.lNode.data == data) || (this.rNode != null && this.rNode.data == data)) {
-			return this;
-		} else if (this.data > data && this.lNode != null) {
-			return this.lNode.searchParent(data);
-		} else if (this.data < data && this.rNode != null) {
-			return this.rNode.searchParent(data);
-		} else {
-			return null;
-		}
-	}
+    /**
+     *
+     * @param data
+     * @return
+     * @Description æŸ¥æ‰¾çˆ¶èŠ‚ç‚¹
+     */
+    public Node searchParent(int data) {
+        if ((this.lNode != null && this.lNode.data == data) || (this.rNode != null && this.rNode.data == data)) {
+            return this;
+        } else if (this.data > data && this.lNode != null) {
+            return this.lNode.searchParent(data);
+        } else if (this.data < data && this.rNode != null) {
+            return this.rNode.searchParent(data);
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * 
-	 * @return
-	 * @Description ¶ş²æÊ÷¸ß¶È
-	 */
-	public int height() {
-		return Math.max(lNode == null ? 0 : lNode.height(), rNode == null ? 0 : rNode.height()) + 1;
-	}
+    /**
+     *
+     * @return
+     * @Description äºŒå‰æ ‘é«˜åº¦
+     */
+    public int height() {
+        return Math.max(lNode == null ? 0 : lNode.height(), rNode == null ? 0 : rNode.height()) + 1;
+    }
 
-	/**
-	 * 
-	 * @return
-	 * @Description ×ó×ÓÊ÷¸ß¶È
-	 */
-	public int lNodeHeight() {
-		if (lNode == null) {
-			return 0;
-		}
-		return lNode.height();
-	}
+    /**
+     *
+     * @return
+     * @Description å·¦å­æ ‘é«˜åº¦
+     */
+    public int lNodeHeight() {
+        if (lNode == null) {
+            return 0;
+        }
+        return lNode.height();
+    }
 
-	/**
-	 * 
-	 * @return
-	 * @Description »ñÈ¡ÓÒ×ÓÊ÷¸ß¶È
-	 */
-	public int rNodeHeight() {
-		if (rNode == null) {
-			return 0;
-		}
-		return rNode.height();
-	}
+    /**
+     *
+     * @return
+     * @Description è·å–å³å­æ ‘é«˜åº¦
+     */
+    public int rNodeHeight() {
+        if (rNode == null) {
+            return 0;
+        }
+        return rNode.height();
+    }
 
-	public Node(int data) {
-		this.data = data;
-	}
+    public Node(int data) {
+        this.data = data;
+    }
 
-	public String toString() {
-		return "Node [data=" + data + "]";
-	}
+    public String toString() {
+        return "Node [data=" + data + "]";
+    }
 
 }

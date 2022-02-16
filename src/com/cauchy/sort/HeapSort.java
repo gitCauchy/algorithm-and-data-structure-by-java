@@ -3,56 +3,56 @@ package com.cauchy.sort;
 import java.util.Arrays;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName HeapSort.java
- * @Date 2019Äê12ÔÂ9ÈÕ
- * @Description ¶ÑÅÅĞò
+ * @Date 2019å¹´12æœˆ9æ—¥
+ * @Description å †æ’åº
  * @Version V0.1
  *
  */
 public class HeapSort {
-	
-	public static void main(String[] args) {
-		int[] arr = {9,6,8,7,0,1,10,4,2};
-		heapSort(arr);
-		System.out.println(Arrays.toString(arr));
-		
-	}
-	
-	public static void maxHeap(int [] arr,int size,int index) {
-		// ÕÒµ½Á½¸ö×Ó½Úµã
-		int lNode = 2*index + 1;
-		int rNode = 2*index + 2;
-		int max = index;
-		// ºÍÁ½¸ö×Ó½Úµã½øĞĞ¶Ô±È£¬ÕÒµ½×î´óµÄ½Úµã
-		if(lNode < size&&arr[lNode] > arr[max]) {
-			max = lNode;
-		}
-		if(rNode < size&&arr[rNode] > arr[max]) {
-			max = rNode;
-		}
-		// µ÷Õû½»»»Î»ÖÃ
-		if(max != index) {
-			int temp = arr[index];
-			arr[index] = arr[max];
-			arr[max] = temp;
-			// ½»»»Î»ÖÃºó¿ÉÄÜ»áÆÆ»µÖ®Ç°ÅÅºÃµÄ¶Ñ£¬ĞèÒªÖØĞÂµ÷Õû
-			maxHeap(arr,size,max);
-		}
-	}
-	
-	public static void heapSort(int arr[]) {
-		int start = (arr.length - 1) / 2;
-		for(int i = start; i >= 0; i --) {
-			maxHeap(arr,arr.length,i);
-		}
-		// ½«×î´óÖµÒÆ¶¯µ½×îºóÒ»¸öÒ¶×Ó½Úµã,ÔÙ°ÑÇ°ÃæµÄ´¦Àí³É´ó¶¥¶Ñ
-		for(int i = arr.length -1 ; i > 0; i --) {
-			int temp = arr[0];
-			arr[0] = arr[i];
-			arr[i] = temp;
-			maxHeap(arr,i,0);
-		}
-	}
+
+    public static void main(String[] args) {
+        int[] arr = {9,6,8,7,0,1,10,4,2};
+        heapSort(arr);
+        System.out.println(Arrays.toString(arr));
+
+    }
+
+    public static void maxHeap(int [] arr,int size,int index) {
+        // æ‰¾åˆ°ä¸¤ä¸ªå­èŠ‚ç‚¹
+        int lNode = 2*index + 1;
+        int rNode = 2*index + 2;
+        int max = index;
+        // å’Œä¸¤ä¸ªå­èŠ‚ç‚¹è¿›è¡Œå¯¹æ¯”ï¼Œæ‰¾åˆ°æœ€å¤§çš„èŠ‚ç‚¹
+        if(lNode < size&&arr[lNode] > arr[max]) {
+            max = lNode;
+        }
+        if(rNode < size&&arr[rNode] > arr[max]) {
+            max = rNode;
+        }
+        // è°ƒæ•´äº¤æ¢ä½ç½®
+        if(max != index) {
+            int temp = arr[index];
+            arr[index] = arr[max];
+            arr[max] = temp;
+            // äº¤æ¢ä½ç½®åå¯èƒ½ä¼šç ´åä¹‹å‰æ’å¥½çš„å †ï¼Œéœ€è¦é‡æ–°è°ƒæ•´
+            maxHeap(arr,size,max);
+        }
+    }
+
+    public static void heapSort(int arr[]) {
+        int start = (arr.length - 1) / 2;
+        for(int i = start; i >= 0; i --) {
+            maxHeap(arr,arr.length,i);
+        }
+        // å°†æœ€å¤§å€¼ç§»åŠ¨åˆ°æœ€åä¸€ä¸ªå¶å­èŠ‚ç‚¹,å†æŠŠå‰é¢çš„å¤„ç†æˆå¤§é¡¶å †
+        for(int i = arr.length -1 ; i > 0; i --) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+            maxHeap(arr,i,0);
+        }
+    }
 }

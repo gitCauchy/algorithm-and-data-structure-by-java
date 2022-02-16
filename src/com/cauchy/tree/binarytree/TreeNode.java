@@ -1,177 +1,174 @@
 package com.cauchy.tree.binarytree;
 
 /**
- * 
  * @author Cauchy
  * @ClassName TreeNode.java
- * @Date 2019Äê12ÔÂ11ÈÕ
- * @Description ¶ş²æÊ÷½Úµã
+ * @Date 2019å¹´12æœˆ11æ—¥
+ * @Description äºŒå‰æ ‘èŠ‚ç‚¹
  * @Version V0.1
- *
  */
 public class TreeNode {
-	/*
-	 * ×ó×Ó½Úµã
-	 */
-	TreeNode lNode;
-	/*
-	 * ÓÒ×Ó½Úµã
-	 */
-	TreeNode rNode;
-	/*
-	 * Öµ
-	 */
-	int data;
+    /**
+     * å·¦å­èŠ‚ç‚¹
+     */
+    TreeNode lNode;
+    /**
+     * å³å­èŠ‚ç‚¹
+     */
+    TreeNode rNode;
+    /**
+     * å€¼
+     */
+    int data;
 
-	/**
-	 * @Description ÏÈĞò±éÀú
-	 */
-	public void preOrderTraversal() {
-		System.out.print(this.data + "-");
-		if (lNode != null) {
-			lNode.preOrderTraversal();
-		}
-		if (rNode != null) {
-			rNode.preOrderTraversal();
-		}
-	}
+    /**
+     * @Description å…ˆåºéå†
+     */
+    public void preOrderTraversal() {
+        System.out.print(this.data + "-");
+        if (lNode != null) {
+            lNode.preOrderTraversal();
+        }
+        if (rNode != null) {
+            rNode.preOrderTraversal();
+        }
+    }
 
-	/**
-	 * @Description ÖĞĞò±éÀú
-	 */
-	public void inOrderTraversal() {
-		if (lNode != null) {
-			lNode.inOrderTraversal();
-		}
-		System.out.print(this.data + "-");
-		if (rNode != null) {
-			rNode.inOrderTraversal();
-		}
-	}
+    /**
+     * @Description ä¸­åºéå†
+     */
+    public void inOrderTraversal() {
+        if (lNode != null) {
+            lNode.inOrderTraversal();
+        }
+        System.out.print(this.data + "-");
+        if (rNode != null) {
+            rNode.inOrderTraversal();
+        }
+    }
 
-	/**
-	 * @Description ºóĞò±éÀú
-	 */
-	public void postOrderTraversal() {
+    /**
+     * @Description ååºéå†
+     */
+    public void postOrderTraversal() {
 
-		if (lNode != null) {
-			lNode.postOrderTraversal();
-		}
-		if (rNode != null) {
-			rNode.postOrderTraversal();
-		}
-		System.out.print(this.data + "-");
-	}
+        if (lNode != null) {
+            lNode.postOrderTraversal();
+        }
+        if (rNode != null) {
+            rNode.postOrderTraversal();
+        }
+        System.out.print(this.data + "-");
+    }
 
-	/**
-	 * 
-	 * @param x
-	 * @return Node
-	 * @Description ÏÈĞò²éÕÒ
-	 */
-	public TreeNode preOrderSearch(int x) {
-		TreeNode target = null;
-		if (this.data == x) {
-			return this;
-		} else {
-			if (lNode != null) {
-				target = lNode.preOrderSearch(x);
-			}
-			// ÔÚ×ó×ÓÊ÷±éÀú¹ı³ÌÖĞ²éÕÒµ½Òª²éÕÒµÄÖµ¾ÍÍ£Ö¹²éÕÒ
-			if (target != null) {
-				return target;
-			}
-			if (rNode != null) {
-				target = rNode.preOrderSearch(x);
-			}
-			if (target != null) {
-				return target;
-			}
-		}
-		return target;
-	}
+    /**
+     * @param x
+     * @return Node
+     * @Description å…ˆåºæŸ¥æ‰¾
+     */
+    public TreeNode preOrderSearch(int x) {
+        TreeNode target = null;
+        if (this.data == x) {
+            return this;
+        } else {
+            if (lNode != null) {
+                target = lNode.preOrderSearch(x);
+            }
+            // åœ¨å·¦å­æ ‘éå†è¿‡ç¨‹ä¸­æŸ¥æ‰¾åˆ°è¦æŸ¥æ‰¾çš„å€¼å°±åœæ­¢æŸ¥æ‰¾
+            if (target != null) {
+                return target;
+            }
+            if (rNode != null) {
+                target = rNode.preOrderSearch(x);
+            }
+            if (target != null) {
+                return target;
+            }
+        }
+        return target;
+    }
 
-	/**
-	 * 
-	 * @param x
-	 * @return
-	 * @Description ÖĞĞò²éÕÒ
-	 */
-	public TreeNode inOrderSearch(int x) {
-		TreeNode target = null;
-		if (lNode != null) {
-			target = lNode.inOrderSearch(x);
-		}
-		if (target != null) {
-			return target;
-		}
-		if (this.data == x) {
-			target = this;
-			return target;
-		} 
-		if (rNode != null) {
-			target = rNode.inOrderSearch(x);
-		}
-		return target;
-	}
+    /**
+     * @param x
+     * @return
+     * @Description ä¸­åºæŸ¥æ‰¾
+     */
+    public TreeNode inOrderSearch(int x) {
+        TreeNode target = null;
+        if (lNode != null) {
+            target = lNode.inOrderSearch(x);
+        }
+        if (target != null) {
+            return target;
+        }
+        if (this.data == x) {
+            target = this;
+            return target;
+        }
+        if (rNode != null) {
+            target = rNode.inOrderSearch(x);
+        }
+        return target;
+    }
 
-	/**
-	 * 
-	 * @param x
-	 * @return
-	 * @Description ºóĞò²éÕÒ
-	 */
-	public TreeNode postOrderSearch(int x) {
-		TreeNode result = null;
-		if(lNode != null) {
-			result = lNode.postOrderSearch(x);
-		}
-		if(result != null) {
-			return result;
-		}else {
-			if(rNode != null) {
-				result = rNode.postOrderSearch(x);
-			}
-			if(result != null) {
-				return result;
-			}
-			if(data == x) {
-				return this;
-			}
-		}
-		return result;
-	}
-	/**
-	 * 
-	 * @param x
-	 * @Description É¾³ı½Úµã
-	 */
-	public void delete(int x) {
-		TreeNode parent = this;
-		// Èç¹û×ó½Úµã²»Îª¿ÕÇÒÇ¡ºÃÎªÒª²éÕÒÉ¾³ıµÄ½Úµã£¬¾Í½«½ÚµãÉ¾³ı
-		if(parent.lNode != null && parent.lNode.data == x) {
-			parent.lNode = null;
-		}else if(parent.rNode != null && rNode.data == x) {// Èç¹ûÓÒ½Úµã²»Îª¿ÕÇÒÇ¡ºÃÎªÒª²éÕÒÉ¾³ıµÄ½Úµã£¬¾Í½«½ÚµãÉ¾³ı
-			parent.rNode = null;
-		}else {
-			parent = parent.lNode;
-			if(parent != null) {
-				parent.delete(x);
-			}
-			parent = parent.rNode;
-			if(parent != null) {
-				parent.delete(x);
-			}
-		}
-	}
-	
-	public TreeNode(int data) {
-		this.data = data;
-	}
+    /**
+     * @param x
+     * @return
+     * @Description ååºæŸ¥æ‰¾
+     */
+    public TreeNode postOrderSearch(int x) {
+        TreeNode result = null;
+        if (lNode != null) {
+            result = lNode.postOrderSearch(x);
+        }
+        if (result != null) {
+            return result;
+        } else {
+            if (rNode != null) {
+                result = rNode.postOrderSearch(x);
+            }
+            if (result != null) {
+                return result;
+            }
+            if (data == x) {
+                return this;
+            }
+        }
+        return result;
+    }
 
-	public String toString() {
-		return "TreeNode [ value=" + data + "]";
-	}
+    /**
+     * @param x
+     * @Description åˆ é™¤èŠ‚ç‚¹
+     */
+    public void delete(int x) {
+        TreeNode parent = this;
+        // å¦‚æœå·¦èŠ‚ç‚¹ä¸ä¸ºç©ºä¸”æ°å¥½ä¸ºè¦æŸ¥æ‰¾åˆ é™¤çš„èŠ‚ç‚¹ï¼Œå°±å°†èŠ‚ç‚¹åˆ é™¤
+        if (parent.lNode != null && parent.lNode.data == x) {
+            parent.lNode = null;
+            // å¦‚æœå³èŠ‚ç‚¹ä¸ä¸ºç©ºä¸”æ°å¥½ä¸ºè¦æŸ¥æ‰¾åˆ é™¤çš„èŠ‚ç‚¹ï¼Œå°±å°†èŠ‚ç‚¹åˆ é™¤
+        } else if (parent.rNode != null && rNode.data == x) {
+            parent.rNode = null;
+        } else {
+            parent = parent.lNode;
+            if (parent != null) {
+                parent.delete(x);
+            }
+            parent = parent.rNode;
+            if (parent != null) {
+                parent.delete(x);
+            }
+        }
+    }
 
-	
+    public TreeNode(int data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "TreeNode [ value=" + data + "]";
+    }
+
+
 }

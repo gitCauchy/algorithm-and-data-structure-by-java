@@ -1,42 +1,42 @@
 package com.cauchy.sort;
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName QuickSort.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description ¿ìËÙÅÅĞò
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description å¿«é€Ÿæ’åº
  * @Version v0.1
  *
  */
 public class QuickSort {
-	public static void quickSort(int arr[], int begin, int end) {
-		if(begin < end) {
-			// »ù×¼Êı×Ö
-			int standard = arr[begin];
-			// ¼ÇÂ¼ĞèÒªÅÅĞòµÄÏÂ±ê
-			int low = begin;
-			int high = end;
-			// Ñ­»·ÕÒ±È±ê×¼Ğ¡µÄºÍ±È±ê×¼´óµÄ
-			while(low < high ) {
-				while(low < high && standard <= arr[high]) {
-					high --;
-				}
-				// ÓÒ±ßµÄÊı×Ö±È±ê×¼ÔªËØĞ¡
-				arr[low] = arr[high];
-				while(low < high && arr[low] <= standard) {
-					low ++;
-				}
-				arr[high] = arr[low];
-			}
-			// ½«Á½¸öÖ¸ÕëÖ¸ÏòµÄÎ»ÖÃµÄÖµ¸³ÖµÎªstandard
-			arr[low] = standard;
-			quickSort(arr,begin,low);
-			quickSort(arr,low + 1,end);
-			
-		}
-	}
-	
-	public static void quickSort(int arr[]) {
-		quickSort(arr, 0, arr.length-1);
-	}
+    public static void quickSort(int arr[], int begin, int end) {
+        if(begin < end) {
+            // åŸºå‡†æ•°å­—
+            int standard = arr[begin];
+            // è®°å½•éœ€è¦æ’åºçš„ä¸‹æ ‡
+            int low = begin;
+            int high = end;
+            // å¾ªç¯æ‰¾æ¯”æ ‡å‡†å°çš„å’Œæ¯”æ ‡å‡†å¤§çš„
+            while(low < high ) {
+                while(low < high && standard <= arr[high]) {
+                    high --;
+                }
+                // å³è¾¹çš„æ•°å­—æ¯”æ ‡å‡†å…ƒç´ å°
+                arr[low] = arr[high];
+                while(low < high && arr[low] <= standard) {
+                    low ++;
+                }
+                arr[high] = arr[low];
+            }
+            // å°†ä¸¤ä¸ªæŒ‡é’ˆæŒ‡å‘çš„ä½ç½®çš„å€¼èµ‹å€¼ä¸ºstandard
+            arr[low] = standard;
+            quickSort(arr,begin,low);
+            quickSort(arr,low + 1,end);
+
+        }
+    }
+
+    public static void quickSort(int arr[]) {
+        quickSort(arr, 0, arr.length-1);
+    }
 }

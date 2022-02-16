@@ -1,42 +1,42 @@
 package com.cauchy.tree.linkedbinarytree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName ThreadedNode.java
- * @Date 2019Äê12ÔÂ12ÈÕ
- * @Description ÏßË÷¶ş²æÊ÷½Úµã
+ * @Date 2019å¹´12æœˆ12æ—¥
+ * @Description çº¿ç´¢äºŒå‰æ ‘èŠ‚ç‚¹
  * @Version V0.1
  *
  */
 public class ThreadedNode {
-	/*
-	 * Êı¾İ
-	 */
-	int data;
-	/*
-	 * ×ó×Ó½Úµã
-	 */
-	ThreadedNode lNode;
-	/*
-	 * ÓÒ×Ó½Úµã
-	 */
-	ThreadedNode rNode;
-	/*
-	 * ×óÖ¸ÕëÀàĞÍ
-	 */
-	int lType;
-	/*
-	 * ÓÒÖ¸ÕëÀàĞÍ
-	 */
-	int rType;
+    /*
+     * æ•°æ®
+     */
+    int data;
+    /*
+     * å·¦å­èŠ‚ç‚¹
+     */
+    ThreadedNode lNode;
+    /*
+     * å³å­èŠ‚ç‚¹
+     */
+    ThreadedNode rNode;
+    /*
+     * å·¦æŒ‡é’ˆç±»å‹
+     */
+    int lType;
+    /*
+     * å³æŒ‡é’ˆç±»å‹
+     */
+    int rType;
 
-	public ThreadedNode(int data) {
-		this.data = data;
-	}
+    public ThreadedNode(int data) {
+        this.data = data;
+    }
 
-	public String toString() {
-		return "TreeNode [ value=" + data + "]";
-	}
+    public String toString() {
+        return "TreeNode [ value=" + data + "]";
+    }
 
 }

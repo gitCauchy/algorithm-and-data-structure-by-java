@@ -1,94 +1,94 @@
 package com.cauchy.list;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName DoubleCircleList.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description Ë«Ñ­»·Á´±í
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description åŒå¾ªç¯é“¾è¡¨
  * @Version V0.1
  *
  */
 public class DoubleCircleList {
-	private class Node{
-		Node prior;
-		int data;
-		Node next;
-		public Node(int data, Node prior,Node next) {
-			
-			this.prior = prior;
-			this.data = data;
-			this.next = next;
-		}
-		public Node() {
-			//super();
-		}
-		
-		
-	}
-	
-	Node head;
-	
-	public DoubleCircleList() {
+    private class Node{
+        Node prior;
+        int data;
+        Node next;
+        public Node(int data, Node prior,Node next) {
 
-		Node node = new Node();
-		head = node;
-		head.next = head;
-		head.prior = head;
-	}
-	
-	public void insert(int loc, int e) {
-		// ÏÈÕÒµ½loc - 1 Î»ÖÃ£º
-		if (loc == 0) {
-			head.data = e;
-		} else {
-			Node node = new Node(e,null,null);
-			node.data = e;
-			Node p = head;
-			for (int i = 0; i < loc - 1; i++) {
-				p = p.next;
-			}
-			node.next = p.next;
-			p.next = node;
-			node.prior = p;
-		}
-	}
-	
-	/**
-	 * @description É¾³ıÁ´±íÖĞÄ³¸ö½ÚµãµÄÔªËØ
-	 * @param loc ÔÚÁ´±íÖĞµÄÎ»ÖÃ
-	 */
-	public void delete(int loc) {
-		Node p = head;
-		for (int i = 0; i < loc ; i++) {
-			p = p.next;
-		}
-		//p.next = p.next.next;
-		p.prior.next = p.next;
-		p.next.prior = p.prior;
-	}
-	/**
-	 * @description ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿ÕÁ´
-	 * @return ÊÇ·ñÎª¿Õ
-	 */
-	public boolean isEmpty() {
-		return head.next == head;
-	}
+            this.prior = prior;
+            this.data = data;
+            this.next = next;
+        }
+        public Node() {
+            //super();
+        }
 
-	@Override
-	public String toString() {
-		return "DoubleCircleList [head=" + head + "]";
-	}
-	
-	/**
-	 *@description Á´±í±éÀú
-	 */
-	public void traversal() {
-		Node p = head;
-		while (p.next != head) { // Ä³¸ö½ÚµãµÄÏÂÒ»¸ö½Úµã²»Îª¿Õ
-			System.out.print(p.data + "--");
-			p = p.next;
-		}
-		System.out.println(p.data);
-	}
+
+    }
+
+    Node head;
+
+    public DoubleCircleList() {
+
+        Node node = new Node();
+        head = node;
+        head.next = head;
+        head.prior = head;
+    }
+
+    public void insert(int loc, int e) {
+        // å…ˆæ‰¾åˆ°loc - 1 ä½ç½®ï¼š
+        if (loc == 0) {
+            head.data = e;
+        } else {
+            Node node = new Node(e,null,null);
+            node.data = e;
+            Node p = head;
+            for (int i = 0; i < loc - 1; i++) {
+                p = p.next;
+            }
+            node.next = p.next;
+            p.next = node;
+            node.prior = p;
+        }
+    }
+
+    /**
+     * @description åˆ é™¤é“¾è¡¨ä¸­æŸä¸ªèŠ‚ç‚¹çš„å…ƒç´ 
+     * @param loc åœ¨é“¾è¡¨ä¸­çš„ä½ç½®
+     */
+    public void delete(int loc) {
+        Node p = head;
+        for (int i = 0; i < loc ; i++) {
+            p = p.next;
+        }
+        //p.next = p.next.next;
+        p.prior.next = p.next;
+        p.next.prior = p.prior;
+    }
+    /**
+     * @description åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©ºé“¾
+     * @return æ˜¯å¦ä¸ºç©º
+     */
+    public boolean isEmpty() {
+        return head.next == head;
+    }
+
+    @Override
+    public String toString() {
+        return "DoubleCircleList [head=" + head + "]";
+    }
+
+    /**
+     *@description é“¾è¡¨éå†
+     */
+    public void traversal() {
+        Node p = head;
+        while (p.next != head) { // æŸä¸ªèŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ä¸ºç©º
+            System.out.print(p.data + "--");
+            p = p.next;
+        }
+        System.out.println(p.data);
+    }
 }

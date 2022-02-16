@@ -2,37 +2,37 @@ package com.cauchy.sort;
 
 import java.util.Arrays;
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName SelectSort.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description Ñ¡ÔñÅÅĞò
- * @Version 
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description é€‰æ‹©æ’åº
+ * @Version
  *
  */
 public class SelectSort {
-	public static void main(String[] args) {
-		int[] arr = { 2, 1, 5, 4, 7, 6, 0, 9, 1, 7, 4, 2 };
-		selectSort(arr);
-		System.out.println(Arrays.toString(arr));
-	}
-	
-	public static void selectSort(int[] arr) {
-		// ±éÀúËùÓĞµÄÔªËØ
-		for(int i = 0; i < arr.length; i ++) {
-			int minIndex = i;
-			// µ±µ±Ç°±éÀúµÄºÍºóÃæËùÓĞµÄÖµ½øĞĞ±È½Ï,²¢¼ÇÂ¼×îĞ¡µÄÏÂ±ê
-			for(int j = i + 1; j < arr.length ; j ++) {
-				if(arr[minIndex] > arr[j]) {
-					minIndex = j;
-				}
-			}
-			// Èç¹û×îĞ¡µÄÊıºÍµ±Ç°±éÀúµÄÖµ²»Ïà·û
-			if(i != minIndex) {
-				int temp = arr[i];
-				arr[i] = arr[minIndex];
-				arr[minIndex] = temp;
-			}
-		}
-	}
+    public static void main(String[] args) {
+        int[] arr = { 2, 1, 5, 4, 7, 6, 0, 9, 1, 7, 4, 2 };
+        selectSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void selectSort(int[] arr) {
+        // éå†æ‰€æœ‰çš„å…ƒç´ 
+        for(int i = 0; i < arr.length; i ++) {
+            int minIndex = i;
+            // å½“å½“å‰éå†çš„å’Œåé¢æ‰€æœ‰çš„å€¼è¿›è¡Œæ¯”è¾ƒ,å¹¶è®°å½•æœ€å°çš„ä¸‹æ ‡
+            for(int j = i + 1; j < arr.length ; j ++) {
+                if(arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            // å¦‚æœæœ€å°çš„æ•°å’Œå½“å‰éå†çš„å€¼ä¸ç›¸ç¬¦
+            if(i != minIndex) {
+                int temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+        }
+    }
 }

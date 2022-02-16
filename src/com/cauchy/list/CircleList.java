@@ -29,7 +29,7 @@ public class CircleList {
 		}
 
 	}
-	
+
 	private Node head;
 	
 	public CircleList() {

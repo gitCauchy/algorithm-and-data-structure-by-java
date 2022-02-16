@@ -3,8 +3,8 @@ package com.cauchy.search;
  * 
  * @author Cauchy
  * @ClassName LinerSearch.java
- * @Date 2019Äê12ÔÂ2ÈÕ
- * @Description ÏßÐÔ²éÕÒ
+ * @Date 2019ï¿½ï¿½12ï¿½ï¿½2ï¿½ï¿½
+ * @Description ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½
  * @Version v0.1
  *
  */

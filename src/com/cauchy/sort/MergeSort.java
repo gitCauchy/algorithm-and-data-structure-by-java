@@ -3,50 +3,50 @@ package com.cauchy.sort;
 import java.util.Arrays;
 
 public class MergeSort {
-	public static void main(String[] args) {
-		int [] arr = {2,1,5,4,7,6,0,9,1,7,4,2};
-		mergeSort(arr);
-		System.out.println(Arrays.toString(arr));
-	}
-	
-	public static void mergeSort(int[] arr, int low,int middle,int high) {
-		int tmp[] = new int[high - low + 1];
-		// ¼ÇÂ¼µÚÒ»¸öÊı×éÖĞĞèÒª±éÀúµÄÏÂ±ê
-		int i = low;
-		// ¼ÇÂ¼µÚ¶ş¸öÊı×éÖĞĞèÒª±éÀúµÄÏÂ±ê
-		int j = middle + 1;
-		// ¼ÇÂ¼ÁÙÊ±Êı×éµÄÏÂ±ê
-		int k = 0;
-		// ±éÀúÁ½¸öÊı×éÖĞ×îĞ¡µÄÊı×é
-		while(i <= middle && j <= high) {
-			if(arr[i] <= arr[j]) {
-				tmp[k] = arr[i];
-				i ++;
-			}else {
-				tmp[k] = arr[j];
-				j ++;
-			}
-			k ++;
-		}
-		// ´¦Àí¶àÓàµÄÊı¾İ
-		while(i<=middle) {
-			tmp[k] = arr[i];
-			i ++;
-			k ++;
-		}
-		while(j<=high) {
-			tmp[k] = arr[j];
-			j ++;
-			k ++;
-		}
-		for(int t = 0; t < tmp.length; t ++) {
-			arr[t + low] = tmp[t];
-		}
-		
-		
-	}
-	
-	public static void mergeSort(int[] arr) {
-		mergeSort(arr,0,(arr.length - 1)/2,arr.length-1);
-	}
+    public static void main(String[] args) {
+        int [] arr = {2,1,5,4,7,6,0,9,1,7,4,2};
+        mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void mergeSort(int[] arr, int low,int middle,int high) {
+        int tmp[] = new int[high - low + 1];
+        // è®°å½•ç¬¬ä¸€ä¸ªæ•°ç»„ä¸­éœ€è¦éå†çš„ä¸‹æ ‡
+        int i = low;
+        // è®°å½•ç¬¬äºŒä¸ªæ•°ç»„ä¸­éœ€è¦éå†çš„ä¸‹æ ‡
+        int j = middle + 1;
+        // è®°å½•ä¸´æ—¶æ•°ç»„çš„ä¸‹æ ‡
+        int k = 0;
+        // éå†ä¸¤ä¸ªæ•°ç»„ä¸­æœ€å°çš„æ•°ç»„
+        while(i <= middle && j <= high) {
+            if(arr[i] <= arr[j]) {
+                tmp[k] = arr[i];
+                i ++;
+            }else {
+                tmp[k] = arr[j];
+                j ++;
+            }
+            k ++;
+        }
+        // å¤„ç†å¤šä½™çš„æ•°æ®
+        while(i<=middle) {
+            tmp[k] = arr[i];
+            i ++;
+            k ++;
+        }
+        while(j<=high) {
+            tmp[k] = arr[j];
+            j ++;
+            k ++;
+        }
+        for(int t = 0; t < tmp.length; t ++) {
+            arr[t + low] = tmp[t];
+        }
+
+
+    }
+
+    public static void mergeSort(int[] arr) {
+        mergeSort(arr,0,(arr.length - 1)/2,arr.length-1);
+    }
 }

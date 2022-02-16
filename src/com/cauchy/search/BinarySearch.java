@@ -3,8 +3,8 @@ package com.cauchy.search;
  * 
  * @author Cauchy
  * @ClassName BinarySearch.java
- * @Date 2019Äê12ÔÂ3ÈÕ
- * @Description ¶ş·Ö²éÕÒ
+ * @Date 2019å¹´12æœˆ3æ—¥
+ * @Description äºŒåˆ†æŸ¥æ‰¾
  * @Version v0.1
  *
  */
@@ -17,12 +17,12 @@ public class BinarySearch {
 		int end = arr.length -1;
 		int mid = (begin + end) / 2;
 		while(begin < end) {
-			// ÅĞ¶ÏÖĞ¼äÔªËØÊÇ·ñÊÇÒª²éÕÒµÄÔªËØ
+			// åˆ¤æ–­ä¸­é—´å…ƒç´ æ˜¯å¦æ˜¯è¦æŸ¥æ‰¾çš„å…ƒç´ 
 			if(arr[mid] == target) {
 				index = mid;
 				break;
 			}else {
-				// ÅĞ¶ÏÖĞ¼äÕâ¸öÔªËØÊÇ·ñ´óÓÚÄ¿±êÖµ
+				// åˆ¤æ–­ä¸­é—´è¿™ä¸ªå…ƒç´ æ˜¯å¦å¤§äºç›®æ ‡å€¼
 				if(arr[mid] < target) {
 					begin = mid;
 					mid = (begin + end)/2;

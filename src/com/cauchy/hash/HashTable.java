@@ -1,27 +1,27 @@
 package com.cauchy.hash;
 
 public class HashTable {
-	/*
-	 * Ê¹ÓÃÊı×é×÷´æ´¢
-	 */
-	private TestData[] dataArr = new TestData[10];
-	/**
-	 * 
-	 * @param data 
-	 * @Description ´æ·ÅÔªËØ
-	 */
-	public void put(TestData data) {
-		int index = data.hashCode();
-		dataArr[index] = data;
-	}
-	/**
-	 * 
-	 * @param key
-	 * @return
-	 * @Description »ñÈ¡ÔªËØ
-	 */
-	public TestData get(int key) {
-		int index = TestData.hashCode(key);
-		return dataArr[index];
-	}
+    /*
+     * ä½¿ç”¨æ•°ç»„ä½œå­˜å‚¨
+     */
+    private TestData[] dataArr = new TestData[10];
+    /**
+     *
+     * @param data
+     * @Description å­˜æ”¾å…ƒç´ 
+     */
+    public void put(TestData data) {
+        int index = data.hashCode();
+        dataArr[index] = data;
+    }
+    /**
+     *
+     * @param key
+     * @return
+     * @Description è·å–å…ƒç´ 
+     */
+    public TestData get(int key) {
+        int index = TestData.hashCode(key);
+        return dataArr[index];
+    }
 }

@@ -1,108 +1,108 @@
 package com.cauchy.tree.binarysorttree;
 
 /**
- * 
+ *
  * @author Cauchy
  * @ClassName Node.java
- * @Date 2019Äê12ÔÂ17ÈÕ
- * @Description ¶þ²æÅÅÐòÊ÷-½Úµã
+ * @Date 2019å¹´12æœˆ17æ—¥
+ * @Description äºŒå‰æŽ’åºæ ‘-èŠ‚ç‚¹
  * @Version V0.1
  *
  */
 public class Node {
-	/*
-	 * Êý¾Ý
-	 */
-	int data;
-	/*
-	 * ×ó½Úµã
-	 */
-	Node lNode;
-	/*
-	 * ÓÒ½Úµã
-	 */
-	Node rNode;
+    /*
+     * æ•°æ®
+     */
+    int data;
+    /*
+     * å·¦èŠ‚ç‚¹
+     */
+    Node lNode;
+    /*
+     * å³èŠ‚ç‚¹
+     */
+    Node rNode;
 
-	public Node(int data) {
-		this.data = data;
-	}
+    public Node(int data) {
+        this.data = data;
+    }
 
-	public String toString() {
-		return "Node [data=" + data + "]";
-	}
+    public String toString() {
+        return "Node [data=" + data + "]";
+    }
 
-	/**
-	 * 
-	 * @param node
-	 * @Description Ïò×ÓÊ÷ÖÐÌí¼Ó½Úµã
-	 */
-	public void add(Node node) {
-		if (node == null) {
-			return;
-		}
-		if (this.data >= node.data) {
-			// Èç¹û½ÚµãÎª¿ÕÖ±½Ó²åÈëµ½Õâ¸ö½ÚµãµÄÎ»ÖÃ
-			if (this.lNode == null) {
-				this.lNode = node;
-			} else {
-				// Èç¹û½Úµã²»Îª¿Õ£¬µÝ¹é
-				this.lNode.add(node);
-			}
-		} else {
-			if (this.rNode == null) {
-				this.rNode = node;
-			} else {
-				this.rNode.add(node);
-			}
-		}
-	}
+    /**
+     *
+     * @param node
+     * @Description å‘å­æ ‘ä¸­æ·»åŠ èŠ‚ç‚¹
+     */
+    public void add(Node node) {
+        if (node == null) {
+            return;
+        }
+        if (this.data >= node.data) {
+            // å¦‚æžœèŠ‚ç‚¹ä¸ºç©ºç›´æŽ¥æ’å…¥åˆ°è¿™ä¸ªèŠ‚ç‚¹çš„ä½ç½®
+            if (this.lNode == null) {
+                this.lNode = node;
+            } else {
+                // å¦‚æžœèŠ‚ç‚¹ä¸ä¸ºç©ºï¼Œé€’å½’
+                this.lNode.add(node);
+            }
+        } else {
+            if (this.rNode == null) {
+                this.rNode = node;
+            } else {
+                this.rNode.add(node);
+            }
+        }
+    }
 
-	/**
-	 * @Description ¶þ²æÅÅÐòÊ÷ÖÐÐò±éÀú Êä³öµÄ½á¹û¼´ÎªÅÅÐòºóµÄ½á¹û
-	 */
-	public void inOrderTraversal() {
-		if (lNode != null) {
-			lNode.inOrderTraversal();
-		}
-		System.out.print(data + "-");
-		if (rNode != null) {
-			rNode.inOrderTraversal();
-		}
-	}
+    /**
+     * @Description äºŒå‰æŽ’åºæ ‘ä¸­åºéåŽ† è¾“å‡ºçš„ç»“æžœå³ä¸ºæŽ’åºåŽçš„ç»“æžœ
+     */
+    public void inOrderTraversal() {
+        if (lNode != null) {
+            lNode.inOrderTraversal();
+        }
+        System.out.print(data + "-");
+        if (rNode != null) {
+            rNode.inOrderTraversal();
+        }
+    }
 
-	/**
-	 * @param data
-	 * @return
-	 * @Description ¶þ²æÅÅÐòÊ÷²éÕÒ
-	 */
-	public Node search(int data) {
-		Node node = null;
-		if (this.data == data) {
-			node = this;
-		} else if (this.data > data) {
-			node = lNode.search(data);
-		} else {
-			node = rNode.search(data);
-		}
-		return node;
-	}
+    /**
+     * @param data
+     * @return
+     * @Description äºŒå‰æŽ’åºæ ‘æŸ¥æ‰¾
+     */
+    public Node search(int data) {
+        Node node = null;
+        if (this.data == data) {
+            node = this;
+        } else if (this.data > data) {
+            node = lNode.search(data);
+        } else {
+            node = rNode.search(data);
+        }
+        return node;
+    }
 
-	/**
-	 * 
-	 * @param data
-	 * @return
-	 * @Description ¶þ²æÅÅÐòÊ÷²éÕÒ¸¸½Úµã
-	 */
+    /**
+     *
+     * @param data
+     * @return
+     * @Description äºŒå‰æŽ’åºæ ‘æŸ¥æ‰¾çˆ¶èŠ‚ç‚¹
+     */
 
-	public Node searchParent(int data) {
-		if ((this.lNode != null && this.lNode.data == data) || (this.rNode != null && this.rNode.data == data)) {
-			return this;
-		} else if (this.data > data && this.lNode != null) {
-			return this.lNode.searchParent(data);
-		} else if (this.data < data && this.rNode != null) {
-			return this.rNode.searchParent(data);
-		} else {
-			return null;
-		}
-	}
+    public Node searchParent(int data) {
+        if ((this.lNode != null && this.lNode.data == data) || (this.rNode != null && this.rNode.data == data)) {
+            return this;
+        } else if (this.data > data && this.lNode != null) {
+            return this.lNode.searchParent(data);
+        } else if (this.data < data && this.rNode != null) {
+            return this.rNode.searchParent(data);
+        } else {
+            return null;
+        }
+    }
 }
