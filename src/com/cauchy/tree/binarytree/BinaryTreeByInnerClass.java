@@ -1,26 +1,24 @@
 package com.cauchy.tree.binarytree;
 
 /**
- *
  * @author Cauchy
  * @ClassName BinaryTree.java
  * @Date 2019年12月5日
  * @Description 二叉树
  * @Version V0.1
- *
  */
 public class BinaryTreeByInnerClass {
 
     public class TreeNode {
-        /*
+        /**
          * 左子节点
          */
         TreeNode lNode;
-        /*
+        /**
          * 右子节点
          */
         TreeNode rNode;
-        /*
+        /**
          * 值
          */
         int value;
@@ -28,7 +26,7 @@ public class BinaryTreeByInnerClass {
         /**
          * @Description 先序遍历
          */
-        public void preOrderTraversal() {
+        void preOrderTraversal() {
             System.out.print(this.value + "-");
             if (lNode != null) {
                 lNode.preOrderTraversal();
@@ -41,7 +39,7 @@ public class BinaryTreeByInnerClass {
         /**
          * @Description 中序遍历
          */
-        public void inOrderTraversal() {
+        void inOrderTraversal() {
             if (lNode != null) {
                 lNode.inOrderTraversal();
             }
@@ -54,7 +52,7 @@ public class BinaryTreeByInnerClass {
         /**
          * @Description 后序遍历
          */
-        public void postOrderTraversal() {
+        void postOrderTraversal() {
             if (lNode != null) {
                 lNode.postOrderTraversal();
             }
@@ -65,10 +63,10 @@ public class BinaryTreeByInnerClass {
         }
 
         /**
+         * 先序查找
          *
          * @param x
          * @return
-         * @Description 先序查找
          */
         public TreeNode preOrderSearch(int x) {
             TreeNode target = null;
@@ -92,10 +90,10 @@ public class BinaryTreeByInnerClass {
         }
 
         /**
+         * 中序查找
          *
          * @param x
          * @return
-         * @Description 中序查找
          */
         public TreeNode inOrderSearch(int x) {
             TreeNode target = null;
@@ -117,7 +115,6 @@ public class BinaryTreeByInnerClass {
         }
 
         /**
-         *
          * @param x
          * @return
          * @Description 后序查找
@@ -165,6 +162,7 @@ public class BinaryTreeByInnerClass {
             this.value = value;
         }
 
+        @Override
         public String toString() {
             return "TreeNode [value=" + value + "]";
         }
@@ -180,7 +178,6 @@ public class BinaryTreeByInnerClass {
     }
 
     /**
-     *
      * @param data
      * @param fNode
      * @param nodeType
@@ -229,8 +226,8 @@ public class BinaryTreeByInnerClass {
         root.postOrderTraversal();
         System.out.println();
     }
+
     /**
-     *
      * @param x
      * @return
      * @Description 先序查找
@@ -238,8 +235,8 @@ public class BinaryTreeByInnerClass {
     public TreeNode preOrderSearch(int x) {
         return root.preOrderSearch(x);
     }
+
     /**
-     *
      * @param x
      * @return
      * @Description 中序查找
@@ -247,8 +244,8 @@ public class BinaryTreeByInnerClass {
     public TreeNode inOrderSearch(int x) {
         return root.inOrderSearch(x);
     }
+
     /**
-     *
      * @param x
      * @return
      * @Description 后序查找
@@ -256,8 +253,8 @@ public class BinaryTreeByInnerClass {
     public TreeNode postOrderSearch(int x) {
         return root.postOrderSearch(x);
     }
+
     /**
-     *
      * @param x
      * @Description 删除节点
      */

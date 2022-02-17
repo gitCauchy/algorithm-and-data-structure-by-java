@@ -1,12 +1,11 @@
 package com.cauchy.tree.binarytree;
+
 /**
- *
  * @author Cauchy
  * @ClassName BinaryTree.java
  * @Date 2019年12月11日
  * @Description 二叉树实现
  * @Version V0.1
- *
  */
 public class BinaryTree {
     /**
@@ -17,28 +16,29 @@ public class BinaryTree {
     public BinaryTree() {
         root = null;
     }
+
     /**
-     *
-     * @param data 数据
-     * @param fNode 父节点
+     * @param data     数据
+     * @param pNode    父节点
      * @param nodeType 节点类型
      * @return
      * @throws Exception
      * @Description 插入节点
      */
-    public TreeNode buildTreeNode(int data,TreeNode fNode,String nodeType) throws Exception{
+    public TreeNode buildTreeNode(int data, TreeNode pNode, String nodeType) throws Exception {
         TreeNode node = new TreeNode(data);
-        if(fNode != null) {
-            if(nodeType.equals("left")) {
-                fNode.lNode = node;
-            }else if(nodeType.equals("right")) {
-                fNode.rNode = node;
-            }else {
+        if (pNode != null) {
+            if (nodeType.equals("left")) {
+                pNode.lNode = node;
+            } else if (nodeType.equals("right")) {
+                pNode.rNode = node;
+            } else {
                 throw new Exception("No such type node");
             }
         }
         return node;
     }
+
     /**
      * @Description 先序遍历二叉树
      */
@@ -47,6 +47,7 @@ public class BinaryTree {
         root.preOrderTraversal();
         System.out.println();
     }
+
     /**
      * @Description 中序遍历二叉树
      */
@@ -55,6 +56,7 @@ public class BinaryTree {
         root.inOrderTraversal();
         System.out.println();
     }
+
     /**
      * @Description 后序遍历二叉树
      */
@@ -63,8 +65,8 @@ public class BinaryTree {
         root.postOrderTraversal();
         System.out.println("");
     }
+
     /**
-     *
      * @param x
      * @return
      * @Description 先序查找
@@ -72,8 +74,8 @@ public class BinaryTree {
     public TreeNode preOrderSearch(int x) {
         return root.preOrderSearch(x);
     }
+
     /**
-     *
      * @param x
      * @return
      * @Description 中序查找
@@ -81,8 +83,8 @@ public class BinaryTree {
     public TreeNode inOrderSearch(int x) {
         return root.inOrderSearch(x);
     }
+
     /**
-     *
      * @param x
      * @return
      * @Description 后序查找
@@ -91,15 +93,20 @@ public class BinaryTree {
         return root.postOrderSearch(x);
     }
 
+    /**
+     * 删除节点
+     *
+     * @param x
+     */
     public void deleteNode(int x) {
-        if(root.data == x) {
+        if (root.data == x) {
             root = null;
-        }else {
+        } else {
             root.delete(x);
         }
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BinaryTree tree = new BinaryTree();
         tree.root = tree.buildTreeNode(1, null, null);
         TreeNode n21 = tree.buildTreeNode(2, tree.root, "left");

@@ -117,10 +117,11 @@ public class TreeNode {
 
     /**
      * 后序查找
+     *
      * @param x
      * @return
      */
-     TreeNode postOrderSearch(int x) {
+    TreeNode postOrderSearch(int x) {
         TreeNode target = null;
         if (lNode != null) {
             target = lNode.postOrderSearch(x);
@@ -146,7 +147,7 @@ public class TreeNode {
      * @param x
      * @Description 删除节点
      */
-    public void delete(int x) {
+    void delete(int x) {
         TreeNode cur = this;
         // 如果左节点不为空且恰好为要查找删除的节点，就将节点删除
         if (cur.lNode != null && cur.lNode.data == x) {
@@ -164,6 +165,10 @@ public class TreeNode {
                 cur.delete(x);
             }
         }
+    }
+
+    TreeNode(int data) {
+        this.data = data;
     }
 
     @Override
