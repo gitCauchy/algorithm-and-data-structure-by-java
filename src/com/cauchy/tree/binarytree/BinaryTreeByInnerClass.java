@@ -1,30 +1,29 @@
 package com.cauchy.tree.binarytree;
 
 /**
+ * 二叉树内部类实现
+ *
  * @author Cauchy
- * @ClassName BinaryTree.java
- * @Date 2019年12月5日
- * @Description 二叉树
- * @Version V0.1
- */
+ * @date 2022/02/17 17:03
+ **/
 public class BinaryTreeByInnerClass {
 
     public class TreeNode {
-        /**
+        /*
          * 左子节点
          */
         TreeNode lNode;
-        /**
+        /*
          * 右子节点
          */
         TreeNode rNode;
-        /**
+        /*
          * 值
          */
         int value;
 
         /**
-         * @Description 先序遍历
+         * 先序遍历
          */
         void preOrderTraversal() {
             System.out.print(this.value + "-");
@@ -37,9 +36,9 @@ public class BinaryTreeByInnerClass {
         }
 
         /**
-         * @Description 中序遍历
+         * 中序遍历
          */
-        void inOrderTraversal() {
+        private void inOrderTraversal() {
             if (lNode != null) {
                 lNode.inOrderTraversal();
             }
@@ -50,9 +49,9 @@ public class BinaryTreeByInnerClass {
         }
 
         /**
-         * @Description 后序遍历
+         * 后序遍历
          */
-        void postOrderTraversal() {
+        private void postOrderTraversal() {
             if (lNode != null) {
                 lNode.postOrderTraversal();
             }
@@ -65,10 +64,10 @@ public class BinaryTreeByInnerClass {
         /**
          * 先序查找
          *
-         * @param x
-         * @return
+         * @param x 待查找值
+         * @return 找到的节点
          */
-        public TreeNode preOrderSearch(int x) {
+        private TreeNode preOrderSearch(int x) {
             TreeNode target = null;
             if (this.value == x) {
                 return this;
@@ -92,10 +91,10 @@ public class BinaryTreeByInnerClass {
         /**
          * 中序查找
          *
-         * @param x
-         * @return
+         * @param x 待查找值
+         * @return 找到的节点
          */
-        public TreeNode inOrderSearch(int x) {
+        private TreeNode inOrderSearch(int x) {
             TreeNode target = null;
             if (lNode != null) {
                 target = lNode.inOrderSearch(x);
@@ -115,11 +114,12 @@ public class BinaryTreeByInnerClass {
         }
 
         /**
-         * @param x
-         * @return
-         * @Description 后序查找
+         * 后序查找
+         *
+         * @param x 待查找值
+         * @return 找到的节点
          */
-        public TreeNode postOrderSearch(int x) {
+        private TreeNode postOrderSearch(int x) {
             TreeNode target = null;
             if (lNode != null) {
                 target = lNode.postOrderSearch(x);
@@ -138,14 +138,12 @@ public class BinaryTreeByInnerClass {
         }
 
         // 删除一棵子树
-        public void delete(int x) {
+        private void delete(int x) {
             TreeNode parent = this;
             if (parent.lNode != null && parent.lNode.value == x) {
                 parent.lNode = null;
-                return;
             } else if (parent.rNode != null && parent.rNode.value == x) {
                 parent.rNode = null;
-                return;
             } else {
                 parent = lNode;
                 if (parent != null) {
@@ -158,7 +156,7 @@ public class BinaryTreeByInnerClass {
             }
         }
 
-        public TreeNode(int value) {
+        private TreeNode(int value) {
             this.value = value;
         }
 
@@ -168,40 +166,49 @@ public class BinaryTreeByInnerClass {
         }
     }
 
-    BinaryTreeByInnerClass.TreeNode root;
+    /**
+     * 左子节点
+     */
+    private static final String LEFTCHILDNODE = "l";
+    /**
+     * 右子节点
+     */
+    private static final String RIGHTCHILDNODE = "r";
+
+    private BinaryTreeByInnerClass.TreeNode root;
 
     /**
-     * @description 创建一颗空树
+     * 创建一颗空树
      */
     public BinaryTreeByInnerClass() {
         root = null;
     }
 
     /**
-     * @param data
-     * @param fNode
-     * @param nodeType
-     * @return 新建立的节点
-     * @throws Exception
+     * 创建节点
+     *
+     * @param data     数据
+     * @param pNode    父节点
+     * @param nodeType 节点类型
+     * @return 创建的节点
+     * @throws Exception 节点类型异常
      */
-    public TreeNode setTreeNode(int data, TreeNode fNode, String nodeType) throws Exception {
-
+    private TreeNode buildTreeNode(int data, TreeNode pNode, String nodeType) throws Exception {
         TreeNode node = new TreeNode(data);
-        if (fNode != null) {
-            if (nodeType.equals("left")) {
-                fNode.lNode = node;
-            } else if (nodeType.equals("right")) {
-                fNode.rNode = node;
+        if (pNode != null) {
+            if (LEFTCHILDNODE.equals(nodeType)) {
+                pNode.lNode = node;
+            } else if (RIGHTCHILDNODE.equals(nodeType)) {
+                pNode.rNode = node;
             } else {
-                throw new Exception("No such Type Node");
+                throw new Exception("No such type node");
             }
         }
-
         return node;
     }
 
     /**
-     * @description 树的先序遍历
+     * 树的先序遍历
      */
     public void preOrderTraversal() {
         System.out.println("--PRE ORDER TRAVERSAL--");
@@ -210,7 +217,7 @@ public class BinaryTreeByInnerClass {
     }
 
     /**
-     * @description 树的中序遍历
+     * 树的中序遍历
      */
     public void inOrderTraversal() {
         System.out.println("--IN ORDER TRAVERSAL--");
@@ -219,7 +226,7 @@ public class BinaryTreeByInnerClass {
     }
 
     /**
-     * @description 树的后序遍历
+     * 树的后序遍历
      */
     public void postOrderTraversal() {
         System.out.println("--POST ORDER TRAVERSAL--");
@@ -228,35 +235,39 @@ public class BinaryTreeByInnerClass {
     }
 
     /**
-     * @param x
-     * @return
-     * @Description 先序查找
+     * 先序查找
+     *
+     * @param x 待查找的值
+     * @return 找到的节点
      */
     public TreeNode preOrderSearch(int x) {
         return root.preOrderSearch(x);
     }
 
     /**
-     * @param x
-     * @return
-     * @Description 中序查找
+     * 中序查找
+     *
+     * @param x 待查找的值
+     * @return 找到的节点
      */
     public TreeNode inOrderSearch(int x) {
         return root.inOrderSearch(x);
     }
 
     /**
-     * @param x
-     * @return
-     * @Description 后序查找
+     * 后序查找
+     *
+     * @param x 待查找的值
+     * @return 找到的节点
      */
     public TreeNode postOrderSearch(int x) {
         return root.postOrderSearch(x);
     }
 
     /**
-     * @param x
-     * @Description 删除节点
+     * 删除节点
+     *
+     * @param x 待删除的值
      */
     public void deleteNode(int x) {
         root.delete(x);
