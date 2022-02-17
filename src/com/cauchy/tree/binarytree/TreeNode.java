@@ -24,7 +24,7 @@ public class TreeNode {
     /**
      * @Description 先序遍历
      */
-    public void preOrderTraversal() {
+    void preOrderTraversal() {
         System.out.print(this.data + "-");
         if (lNode != null) {
             lNode.preOrderTraversal();
@@ -37,7 +37,7 @@ public class TreeNode {
     /**
      * @Description 中序遍历
      */
-    public void inOrderTraversal() {
+    void inOrderTraversal() {
         if (lNode != null) {
             lNode.inOrderTraversal();
         }
@@ -50,7 +50,7 @@ public class TreeNode {
     /**
      * @Description 后序遍历
      */
-    public void postOrderTraversal() {
+    void postOrderTraversal() {
 
         if (lNode != null) {
             lNode.postOrderTraversal();
@@ -66,24 +66,24 @@ public class TreeNode {
      * @return Node
      * @Description 先序查找
      */
-    public TreeNode preOrderSearch(int x) {
+    TreeNode preOrderSearch(int x) {
         TreeNode target = null;
         if (this.data == x) {
             return this;
         } else {
             if (lNode != null) {
                 target = lNode.preOrderSearch(x);
-            }
-            // 在左子树遍历过程中查找到要查找的值就停止查找
-            if (target != null) {
-                return target;
+                if (target != null) {
+                    return target;
+                }
             }
             if (rNode != null) {
                 target = rNode.preOrderSearch(x);
+                if (target != null) {
+                    return target;
+                }
             }
-            if (target != null) {
-                return target;
-            }
+
         }
         return target;
     }
@@ -93,48 +93,53 @@ public class TreeNode {
      * @return
      * @Description 中序查找
      */
-    public TreeNode inOrderSearch(int x) {
+    TreeNode inOrderSearch(int x) {
         TreeNode target = null;
         if (lNode != null) {
             target = lNode.inOrderSearch(x);
+            if (target != null) {
+                return target;
+            }
         }
-        if (target != null) {
-            return target;
-        }
+
         if (this.data == x) {
             target = this;
             return target;
         }
         if (rNode != null) {
             target = rNode.inOrderSearch(x);
+            if (target != null) {
+                return target;
+            }
         }
         return target;
     }
 
     /**
+     * 后序查找
      * @param x
      * @return
-     * @Description 后序查找
      */
-    public TreeNode postOrderSearch(int x) {
-        TreeNode result = null;
+     TreeNode postOrderSearch(int x) {
+        TreeNode target = null;
         if (lNode != null) {
-            result = lNode.postOrderSearch(x);
-        }
-        if (result != null) {
-            return result;
-        } else {
-            if (rNode != null) {
-                result = rNode.postOrderSearch(x);
-            }
-            if (result != null) {
-                return result;
-            }
-            if (data == x) {
-                return this;
+            target = lNode.postOrderSearch(x);
+            if (target != null) {
+                return target;
             }
         }
-        return result;
+
+        if (rNode != null) {
+            target = rNode.postOrderSearch(x);
+            if (target != null) {
+                return target;
+            }
+        }
+        if (this.data == x) {
+            return this;
+        }
+
+        return target;
     }
 
     /**
@@ -142,27 +147,23 @@ public class TreeNode {
      * @Description 删除节点
      */
     public void delete(int x) {
-        TreeNode parent = this;
+        TreeNode cur = this;
         // 如果左节点不为空且恰好为要查找删除的节点，就将节点删除
-        if (parent.lNode != null && parent.lNode.data == x) {
-            parent.lNode = null;
+        if (cur.lNode != null && cur.lNode.data == x) {
+            cur.lNode = null;
             // 如果右节点不为空且恰好为要查找删除的节点，就将节点删除
-        } else if (parent.rNode != null && rNode.data == x) {
-            parent.rNode = null;
+        } else if (cur.rNode != null && rNode.data == x) {
+            cur.rNode = null;
         } else {
-            parent = parent.lNode;
-            if (parent != null) {
-                parent.delete(x);
+            cur = cur.lNode;
+            if (cur != null) {
+                cur.delete(x);
             }
-            parent = parent.rNode;
-            if (parent != null) {
-                parent.delete(x);
+            cur = cur.rNode;
+            if (cur != null) {
+                cur.delete(x);
             }
         }
-    }
-
-    public TreeNode(int data) {
-        this.data = data;
     }
 
     @Override
