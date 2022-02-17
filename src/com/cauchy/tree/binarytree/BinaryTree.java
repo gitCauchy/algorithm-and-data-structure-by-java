@@ -9,7 +9,7 @@ package com.cauchy.tree.binarytree;
  */
 public class BinaryTree {
     /**
-     * 根节点
+     * q根节点
      */
     private TreeNode root;
 
