@@ -1,12 +1,11 @@
 package com.cauchy.tree.binarytree;
 
 /**
+ * 二叉树节点
+ *
  * @author Cauchy
- * @ClassName TreeNode.java
- * @Date 2019年12月11日
- * @Description 二叉树节点
- * @Version V0.1
- */
+ * @date 2022/02/17 16:33
+ **/
 public class TreeNode {
     /**
      * 左子节点
@@ -22,7 +21,7 @@ public class TreeNode {
     int data;
 
     /**
-     * @Description 先序遍历
+     * 先序遍历
      */
     void preOrderTraversal() {
         System.out.print(this.data + "-");
@@ -35,7 +34,7 @@ public class TreeNode {
     }
 
     /**
-     * @Description 中序遍历
+     * 中序遍历
      */
     void inOrderTraversal() {
         if (lNode != null) {
@@ -48,7 +47,7 @@ public class TreeNode {
     }
 
     /**
-     * @Description 后序遍历
+     * 后序遍历
      */
     void postOrderTraversal() {
 
@@ -62,9 +61,10 @@ public class TreeNode {
     }
 
     /**
-     * @param x
-     * @return Node
-     * @Description 先序查找
+     * 先序查找
+     *
+     * @param x 待查找的值
+     * @return 查到的节点
      */
     TreeNode preOrderSearch(int x) {
         TreeNode target = null;
@@ -89,9 +89,10 @@ public class TreeNode {
     }
 
     /**
-     * @param x
-     * @return
-     * @Description 中序查找
+     * 中序查找
+     *
+     * @param x 待查找的值
+     * @return 查到的节点
      */
     TreeNode inOrderSearch(int x) {
         TreeNode target = null;
@@ -118,8 +119,8 @@ public class TreeNode {
     /**
      * 后序查找
      *
-     * @param x
-     * @return
+     * @param x 待查找的值
+     * @return 查到的节点
      */
     TreeNode postOrderSearch(int x) {
         TreeNode target = null;
@@ -144,8 +145,9 @@ public class TreeNode {
     }
 
     /**
-     * @param x
-     * @Description 删除节点
+     * 删除节点
+     *
+     * @param x 待删除节点的值
      */
     void delete(int x) {
         TreeNode cur = this;
